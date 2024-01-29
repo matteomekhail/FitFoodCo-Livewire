@@ -1,6 +1,8 @@
-<div id="navbar-wrapper" class="sticky top-0 z-30 bg-[#FACB01] lg:bg-opacity-90 lg:fixed lg:backdrop-blur-lg w-full lg:h-40 flex items-center shadow-2xl"
+<div id="navbar-wrapper"
+    class="sticky top-0 z-30 lg:bg-opacity-90 lg:fixed lg:backdrop-blur-lg w-full lg:h-40 flex items-center shadow-2xl"
     x-data="{ atTop: false }" :class="{ 'border-base-content/10': atTop, 'border-transparent': !atTop }"
-    @scroll.window="atTop = (window.pageYOffset < 30) ? false: true">
+    @scroll.window="atTop = (window.pageYOffset < 30) ? false: true"
+    style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
     <div class="container">
         <nav class="navbar px-0">
             <div class="navbar-start gap-2">
@@ -29,10 +31,13 @@
         <div class="drawer">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" />
             <div class="drawer-side">
-                <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay" style="background-color: transparent"></label>
-                <ul class="menu min-h-full w-80 gap-2 bg-transparent p-4 text-neutral bg-[#FACB01] flex flex-col items-center">
+                <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"
+                    style="background-color: transparent"></label>
+                <ul
+                    class="menu min-h-full w-80 gap-2 bg-transparent p-4 text-neutral bg-[#FACB01] flex flex-col items-center">
                     <li class="font-medium">
-                        <img class="w-50 md:w-32 lg:w-48 h-auto tracking-tighter" src="/images/logo-removebg.png" alt="FitFoodCo" />
+                        <img class="w-50 md:w-32 lg:w-48 h-auto tracking-tighter" src="/images/logo-removebg.png"
+                            alt="FitFoodCo" />
                     </li>
                     <li class="font-medium"><a href="/">Home</a></li>
                     <li class="font-medium"><a href="/#services">Menu</a></li>
@@ -47,7 +52,7 @@
             e.preventDefault();
             window.scrollTo({
                 top: document.querySelector('#membership').offsetTop -
-                100, // 100 is the offset from the top
+                    100, // 100 is the offset from the top
                 behavior: 'smooth'
             });
         });

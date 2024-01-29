@@ -21,4 +21,6 @@
 <body class="overflow-x-hidden bg-base-100 font-body text-sm text-base-content antialiased">
         @livewire('navbar')
         @livewire('hero')
+        @livewire('menu')
+        @include('components.footer')
 </html>
