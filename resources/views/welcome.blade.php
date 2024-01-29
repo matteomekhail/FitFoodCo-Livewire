@@ -23,4 +23,5 @@
         @livewire('hero')
         @livewire('menu')
         @include('components.footer')
+        @livewireScripts
 </html>

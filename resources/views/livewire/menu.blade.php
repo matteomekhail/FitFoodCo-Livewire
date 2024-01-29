@@ -20,8 +20,8 @@
                         <div class="mt-3 flex justify-center items-center focus:ring-[#FAD961]">
                             <button wire:click="updateQuantity({{ $product['id'] }}, -1)"
                                 class="bg-[#FACB01] text-white hover:text-black focus:ring-[#FAD961] py-2 px-4 rounded-full shadow-lg transition-all duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">-</button>
-                            <span class="mx-4 text-2xl font-bold text-white shadow-text">{{ $product['quantity'] }}</span>
-                            <button wire:click="updateQuantity({{ $product['id'] }}, 1)"
+                                <span class="mx-4 text-2xl font-bold text-white shadow-text">{{ $productQuantities[$product['id']] ?? 0 }}</span>
+                                <button wire:click="updateQuantity({{ $product['id'] }}, 1)"
                                 class="bg-[#FACB01] text-white hover:text-black focus:ring-[#FAD961] py-2 px-4 rounded-full shadow-lg transition-all duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">+</button>
                         </div>
                     </div>

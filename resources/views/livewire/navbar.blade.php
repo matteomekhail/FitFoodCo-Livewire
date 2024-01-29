@@ -34,7 +34,8 @@
                 <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"
                     style="background-color: transparent"></label>
                 <ul
-                    class="menu min-h-full w-80 gap-2 bg-transparent p-4 text-neutral bg-[#FACB01] flex flex-col items-center">
+                    class="menu min-h-full w-80 gap-2 p-4 text-neutral flex flex-col items-center z-50"
+                    style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
                     <li class="font-medium">
                         <img class="w-50 md:w-32 lg:w-48 h-auto tracking-tighter" src="/images/logo-removebg.png"
                             alt="FitFoodCo" />
@@ -48,15 +49,6 @@
 
     </div>
     <script>
-        document.querySelector('a[href="/#membership"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: document.querySelector('#membership').offsetTop -
-                    100, // 100 is the offset from the top
-                behavior: 'smooth'
-            });
-        });
-
         document.querySelector('a[href="/#visitUs"]').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({
