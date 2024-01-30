@@ -7,7 +7,8 @@
         <nav class="navbar px-0">
             <div class="navbar-start gap-2">
                 <div class="flex-none lg:hidden">
-                    <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost" style="color: black !important;">
+                    <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost"
+                        style="color: black !important;">
                         <i class="icon-menu inline-block text-xl"></i>
                     </label>
                 </div>
@@ -17,7 +18,7 @@
                     alt="FitFoodCo" />
                 <div class="lg:hidden ml-auto relative">
                     <div class="font-medium pt-1 text-black">
-                        <a onclick="toggleSidebarEvent()">
+                        <button onclick="toggleSidebarEvent()"  aria-label="Shopping cart">
                             <i class="fas fa-shopping-cart"></i>
                             @if ($cartItemCount > 0)
                                 <span
@@ -25,7 +26,7 @@
                                     {{ $cartItemCount }}
                                 </span>
                             @endif
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -36,7 +37,7 @@
                     <li class="font-medium"><a href="/#services">Menu</a></li>
                     <li class="font-medium"><a href="/#visitUs">Visit Us</a></li>
                     <li class="font-medium pt-1 relative">
-                        <a onclick="toggleSidebarEvent()">
+                        <button onclick="toggleSidebarEvent()" aria-label="Open shopping cart">
                             <i class="fas fa-shopping-cart"></i>
                             @if ($cartItemCount > 0)
                                 <span
@@ -45,7 +46,7 @@
                                     {{ $cartItemCount }}
                                 </span>
                             @endif
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </div>
