@@ -7,4 +7,10 @@
 
 body {
     touch-action: pan-y;
-  }
+}
+
+@font-face {
+    font-family: "Lucide";
+    src: url("/assets/lucide-4Uw_5IKl.woff2?t=170") format("woff2");
+    font-display: swap;
+}

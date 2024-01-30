@@ -15,7 +15,7 @@
 
                 <!-- Navbar Brand logo -->
                 <img class="w-50 md:w-40 lg:w-60 h-auto text-center tracking-tighter" src="/images/logo-removebg.webp"
-                    alt="FitFoodCo" />
+                alt="FitFoodCo" width="240" height="160" />
                 <div class="lg:hidden ml-auto relative">
                     <div class="font-medium pt-1 text-black">
                         <button onclick="toggleSidebarEvent()"  aria-label="Shopping cart">
@@ -62,7 +62,7 @@
                     style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
                     <li class="font-medium">
                         <img class="w-50 md:w-32 lg:w-48 h-auto tracking-tighter" src="/images/logo-removebg.webp"
-                            alt="FitFoodCo" />
+                            alt="FitFoodCo" width="192" height="128" />
                     </li>
                     <li class="font-medium"><a href="/">Home</a></li>
                     <li class="font-medium"><a href="/#menu">Menu</a></li>
