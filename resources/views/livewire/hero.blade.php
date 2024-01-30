@@ -7,7 +7,7 @@
                         Fuel your potential with <span class="text-black">FitFoodCo</span>
                     </h1>
                     <p class="mt-4 text-lg text-black">
-                        Fuel your fitness journey with our expertly crafted, nutritious meals <br>
+                        Fuel your <b class="text-purple-600">fitness</b> journey with our expertly <b class="text-blue-600">crafted</b>, <b class="text-indigo-600">nutritious</b> meals <br>
                         where <b class="text-green-700">health</b> meets <b class="text-red-600">taste</b>!
                     </p>
                 </div>

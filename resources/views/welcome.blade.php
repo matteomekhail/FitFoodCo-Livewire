@@ -6,8 +6,7 @@
     <title>FitFoodCo</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta content="FitFoodCo Seriously Good Food!" name="description" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <!-- Theme favicon -->
     <link rel="shortcut icon" href="/images/favicon.ico" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>

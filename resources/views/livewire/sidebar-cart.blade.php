@@ -3,14 +3,15 @@
     <div class="fixed right-0 top-0 h-full w-full md:w-80 lg:w-[25rem] shadow-2xl p-4 z-50 flex flex-col overflow-auto"
         style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);"a>
         <svg wire:click="$set('isOpen', false)" class="h-6 w-6 absolute top-4 right-4 cursor-pointer"
-            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
         <h2 class="text-2xl text-black mb-4">Your Cart</h2>
         @if (count($cartItems) > 0)
             <div class="flex flex-col gap-4 flex-grow">
                 @foreach ($cartItems as $item)
-                    <div class="relative shadow-sm bg-[#fafafa] flex h-32 rounded-xl">
+                    <div class="relative shadow-sm bg-[#fafafa] flex h-32 rounded-xl"
+                        wire:key="{{ $item->product->id }}">
                         <svg wire:click.stop="dispatch('updateQuantity', [{{ $item->product->id }}, {{ $item->quantity > 0 ? -$item->quantity : 0 }}])"
                             class="h-6 w-6 absolute top-4 right-4 cursor-pointer text-red-500"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

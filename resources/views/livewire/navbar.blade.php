@@ -60,7 +60,7 @@
                 <ul class="menu min-h-full w-80 gap-2 p-4 text-neutral flex flex-col items-center z-50"
                     style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
                     <li class="font-medium">
-                        <img class="w-50 md:w-32 lg:w-48 h-auto tracking-tighter" src="/images/logo-removebg.png"
+                        <img class="w-50 md:w-32 lg:w-48 h-auto tracking-tighter" src="/images/logo-removebg.webp"
                             alt="FitFoodCo" />
                     </li>
                     <li class="font-medium"><a href="/">Home</a></li>
