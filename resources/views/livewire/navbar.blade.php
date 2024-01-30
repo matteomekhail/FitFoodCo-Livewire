@@ -7,7 +7,7 @@
         <nav class="navbar px-0">
             <div class="navbar-start gap-2">
                 <div class="flex-none lg:hidden">
-                    <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost">
+                    <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost" style="color: black !important;">
                         <i class="icon-menu inline-block text-xl"></i>
                     </label>
                 </div>
@@ -15,18 +15,19 @@
                 <!-- Navbar Brand logo -->
                 <img class="w-50 md:w-40 lg:w-60 h-auto text-center tracking-tighter" src="/images/logo-removebg.webp"
                     alt="FitFoodCo" />
-                    <div class="lg:hidden ml-auto relative">
-                        <div class="font-medium pt-1 text-black">
-                            <a onclick="toggleSidebarEvent()">
-                                <i class="fas fa-shopping-cart"></i>
-                                @if ($cartItemCount > 0)
-                                    <span class="absolute right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center left-2 bottom-2">
-                                        {{ $cartItemCount }}
-                                    </span>
-                                @endif
-                            </a>
-                        </div>
+                <div class="lg:hidden ml-auto relative">
+                    <div class="font-medium pt-1 text-black">
+                        <a onclick="toggleSidebarEvent()">
+                            <i class="fas fa-shopping-cart"></i>
+                            @if ($cartItemCount > 0)
+                                <span
+                                    class="absolute right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center left-2 bottom-2">
+                                    {{ $cartItemCount }}
+                                </span>
+                            @endif
+                        </a>
                     </div>
+                </div>
             </div>
 
             <div class="navbar-center hidden lg:flex ">

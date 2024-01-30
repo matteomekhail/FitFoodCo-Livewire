@@ -26,16 +26,6 @@
     @livewire('sidebar-cart')
     @livewireScripts
     <script>
-        document.addEventListener('touchstart', function(event) {
-            if (event.scale !== 1) {
-                event.preventDefault();
-            }
-        }, {
-            passive: false
-        });
-        document.addEventListener('gesturestart', function(e) {
-            e.preventDefault();
-        });
     </script>
 </body>
 
