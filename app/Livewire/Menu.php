@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Cache;
 class Menu extends Component
 {
     public $productQuantities = [];
+    protected $listeners = ['updateQuantity' => 'updateQuantity'];
+
 
     public function mount()
     {
@@ -35,7 +37,6 @@ class Menu extends Component
             }
         }
     }
-
     public function updateQuantity($productId, $change)
     {
         if (auth()->check()) {

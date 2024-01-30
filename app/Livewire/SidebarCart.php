@@ -13,7 +13,28 @@ class SidebarCart extends Component
 {
     public $isOpen = false;
 
-    protected $listeners = ['toggleSidebar' => 'toggleCartSidebar'];
+    protected $listeners = ['toggleSidebar' => 'toggleCartSidebar', 'updateQuantity' => 'refreshItem'];
+
+    public function refreshItem()
+    {
+        if (auth()->check()) {
+            $userId = auth()->id();
+            $this->cartItems = Cart::where('user_id', $userId)->get();
+        } else {
+            $guestCart = session()->get('guest_cart', []);
+            $this->cartItems = [];
+            foreach ($guestCart as $productId => $quantity) {
+                $product = Product::find($productId);
+                if ($product) {
+                    $this->cartItems[] = (object) [
+                        'product_id' => $productId,
+                        'quantity' => $quantity,
+                        'product' => $product,
+                    ];
+                }
+            }
+        }
+    }
     public function toggleCartSidebar()
     {
         $this->isOpen = !$this->isOpen;

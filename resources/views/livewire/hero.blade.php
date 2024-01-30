@@ -1,20 +1,19 @@
 <section class="py-8 lg:py-40 bg-[#FACB01] shadow-2xl" id="home">
     <div class="container">
         <div class="grid gap-12 lg:grid-cols-2">
-            <div class="lg:mt-40">
+            <div class="lg:mt-40 text-center lg:text-left">
                 <div>
                     <h1 class="text-4xl font-black tracking-tighter lg:text-6xl lg:leading-none">
-                       Fuel your potential with <span class="text-black">FitFoodCo</span>
+                        Fuel your potential with <span class="text-black">FitFoodCo</span>
                     </h1>
-                    <p class="mt-8 text-lg text-black">
-                        Our destination for healthy and performance-driven nutrition. <br> Our expert team
-                        is committed to providing top-quality meal services. Explore our healthy meal options, designed to
-                        support your fitness and wellness goals. <br> Your journey towards a healthier and more active life
-                        starts here.                    </p>
+                    <p class="mt-4 text-lg text-black">
+                        Fuel your fitness journey with our expertly crafted, nutritious meals <br>
+                        where <b class="text-green-700">health</b> meets <b class="text-red-600">taste</b>!
+                    </p>
                 </div>
-                <div class="mt-16">
-                    <button class="btn btn-primary text-lg px-4 py-2" id="services"
-                        onclick="location.href='/booknow'">Browse Full Menu</button>
+                <div class="mt-4">
+                    <button class="btn btn-primary text-lg px-4 lg:py-2" id="services"
+                        onclick="location.href='/#menu'">Browse Full Menu</button>
                 </div>
             </div>
             <div class="lg:mt-20">
@@ -22,4 +21,13 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector('a[href="/#menu"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: document.querySelector('#menu').offsetTop - 100, // 100 is the offset from the top
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </section>

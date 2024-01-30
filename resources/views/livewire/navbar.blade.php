@@ -63,7 +63,7 @@
                             alt="FitFoodCo" />
                     </li>
                     <li class="font-medium"><a href="/">Home</a></li>
-                    <li class="font-medium"><a href="/#services">Menu</a></li>
+                    <li class="font-medium"><a href="/#menu">Menu</a></li>
                     <li class="font-medium"><a href="/#visitUs">Visit Us</a></li>
                 </ul>
             </div>
@@ -74,7 +74,14 @@
         document.querySelector('a[href="/#visitUs"]').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({
-                top: document.querySelector('#visitUs').offsetTop - 100, // 100 is the offset from the top
+                top: document.querySelector('#menu').offsetTop + 100, // 100 is the offset from the top
+                behavior: 'smooth'
+            });
+        });
+        document.querySelector('a[href="/#menu"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: document.querySelector('#visitUs').offsetTop - 30, // 100 is the offset from the top
                 behavior: 'smooth'
             });
         });

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>FitFoodCo</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <meta content="Saas Landing page" name="description" />
+    <meta content="FitFoodCo Seriously Good Food!" name="description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <!-- Theme favicon -->
@@ -25,5 +25,18 @@
     @include('components.footer')
     @livewire('sidebar-cart')
     @livewireScripts
+    <script>
+        document.addEventListener('touchstart', function(event) {
+            if (event.scale !== 1) {
+                event.preventDefault();
+            }
+        }, {
+            passive: false
+        });
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
 
 </html>
