@@ -12,7 +12,6 @@ use Stripe\Checkout\Session;
 class SidebarCart extends Component
 {
     public $isOpen = false;
-
     protected $listeners = ['toggleSidebar' => 'toggleCartSidebar', 'updateQuantity' => 'refreshItem'];
 
     public function refreshItem()
@@ -42,6 +41,10 @@ class SidebarCart extends Component
 
     public function checkout()
     {
+        if (!auth()->check()) {
+            $this->dispatch('show-modal');
+            return;
+        }
         // Configurare Stripe
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
