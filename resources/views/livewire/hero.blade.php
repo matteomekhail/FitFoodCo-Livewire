@@ -3,7 +3,7 @@
         <div class="grid gap-12 lg:grid-cols-2">
             <div class="lg:mt-40 text-center lg:text-left">
                 <div>
-                    <h1 class="text-4xl font-black tracking-tighter lg:text-6xl lg:leading-none">
+                    <h1 class="text-4xl text-[#F8F8FF] font-black tracking-tighter lg:text-6xl lg:leading-none">
                         Fuel your potential with <span class="text-black">FitFoodCo</span>
                     </h1>
                     <p class="mt-4 text-lg text-black">

@@ -5,7 +5,6 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Carts as Cart;
 use App\Models\Product;
-use Livewire\Volt\Compilers\Mount;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
@@ -14,25 +13,30 @@ class SidebarCart extends Component
     public $isOpen = false;
     protected $listeners = ['toggleSidebar' => 'toggleCartSidebar', 'updateQuantity' => 'refreshItem'];
 
-    public function refreshItem()
+    public function getCartItems()
     {
         if (auth()->check()) {
             $userId = auth()->id();
-            $this->cartItems = Cart::where('user_id', $userId)->get();
+            return Cart::with('product')->where('user_id', $userId)->get();
         } else {
             $guestCart = session()->get('guest_cart', []);
-            $this->cartItems = [];
+            $cartItems = [];
             foreach ($guestCart as $productId => $quantity) {
                 $product = Product::find($productId);
                 if ($product) {
-                    $this->cartItems[] = (object) [
+                    $cartItems[] = (object) [
                         'product_id' => $productId,
                         'quantity' => $quantity,
                         'product' => $product,
                     ];
                 }
             }
+            return $cartItems;
         }
+    }
+    public function refreshItem()
+    {
+        $this->cartItems = $this->getCartItems();
     }
     public function toggleCartSidebar()
     {
@@ -45,29 +49,17 @@ class SidebarCart extends Component
             $this->dispatch('show-modal');
             return;
         }
+
         // Configurare Stripe
-        Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe::setApiKey(config('services.stripe.secret'));
 
         // Creare un array per contenere le linee di prodotto
         $line_items = [];
 
         // Ottenere gli articoli nel carrello
-        if (auth()->check()) {
-            $userId = auth()->id();
-            $cartItems = Cart::where('user_id', $userId)->get();
-        } else {
-            $guestCart = session()->get('guest_cart', []);
-            foreach ($guestCart as $productId => $quantity) {
-                $product = Product::find($productId);
-                if ($product) {
-                    $cartItems[] = (object) [
-                        'product_id' => $productId,
-                        'quantity' => $quantity,
-                        'product' => $product,
-                    ];
-                }
-            }
-        }
+        $cartItems = $this->getCartItems();
+
+
 
         // Aggiungere ogni articolo nel carrello come una linea di prodotto
         foreach ($cartItems as $item) {
@@ -85,6 +77,7 @@ class SidebarCart extends Component
             ];
         }
 
+
         // Creare la sessione di checkout
         $session = Session::create([
             'payment_method_types' => ['card'],
@@ -92,32 +85,15 @@ class SidebarCart extends Component
             'mode' => 'payment',
             'success_url' => url('/'),
             'cancel_url' => url('/'),
+            'allow_promotion_codes' => true,
         ]);
+        return redirect()->away('https://checkout.stripe.com/pay/' . $session->id);
 
-        // Reindirizzare l'utente alla pagina di checkout
-        return redirect($session->url);
     }
 
     public function render()
     {
-        $cartItems = [];
-
-        if (auth()->check()) {
-            $userId = auth()->id();
-            $cartItems = Cart::where('user_id', $userId)->get();
-        } else {
-            $guestCart = session()->get('guest_cart', []);
-            foreach ($guestCart as $productId => $quantity) {
-                $product = Product::find($productId);
-                if ($product) {
-                    $cartItems[] = (object) [
-                        'product_id' => $productId,
-                        'quantity' => $quantity,
-                        'product' => $product,
-                    ];
-                }
-            }
-        }
+        $cartItems = $this->getCartItems();
         return view('livewire.sidebar-cart', ['cartItems' => $cartItems]);
     }
 }

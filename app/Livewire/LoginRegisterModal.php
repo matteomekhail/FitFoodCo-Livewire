@@ -58,15 +58,15 @@ class LoginRegisterModal extends Component
 
     public function login()
     {
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            $this->addError('password', 'Email or password do not match our records.');
-            return;
-        }
-
         $this->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
+
+        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+            $this->addError('password', 'Email or password do not match our records.');
+            return;
+        }
 
         // Authentication passed...
         $this->showModal = false;
