@@ -91,7 +91,7 @@
                             <div>
                                 <label for="email" class="text-sm font-medium text-black block mb-2">Your
                                     email</label>
-                                <input type="email" name="email" id="email"
+                                <input type="email" name="email" id="email" wire:model="email"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     placeholder="name@provider.com" required="">
                                 @error('email')
@@ -101,7 +101,7 @@
                             <div>
                                 <label for="password" class="text-sm font-medium text-black block mb-2 ">Your
                                     password</label>
-                                <input type="password" name="password" id="password" placeholder="••••••••"
+                                <input type="password" name="password" id="password" placeholder="••••••••" wire:model="password"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     required="">
                                 @error('password')

@@ -68,8 +68,6 @@ class Menu extends Component
                 'quantity' => 1
             ]);
         }
-        Log::info('Session Guest Cart:', session('guest_cart'));
-
     }
 
     private function updateGuestUserCart($productId, $change)
@@ -85,8 +83,6 @@ class Menu extends Component
         }
 
         session()->put('guest_cart', $guestCart);
-        Log::info('Session Guest Cart:', session()->get('guest_cart', []));
-
     }
 
     public function render()

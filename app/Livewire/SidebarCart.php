@@ -67,7 +67,7 @@ class SidebarCart extends Component
 
             $line_items[] = [
                 'price_data' => [
-                    'currency' => 'usd',
+                    'currency' => 'aud', // Cambia 'usd' in 'aud'
                     'product_data' => [
                         'name' => $product->name,
                     ],
@@ -86,8 +86,11 @@ class SidebarCart extends Component
             'success_url' => url('/'),
             'cancel_url' => url('/'),
             'allow_promotion_codes' => true,
+            'shipping_address_collection' => [
+                'allowed_countries' => ['AU','NZ'],
+            ],
         ]);
-        return redirect()->away('https://checkout.stripe.com/pay/' . $session->id);
+        return redirect()->away($session->url);
 
     }
 

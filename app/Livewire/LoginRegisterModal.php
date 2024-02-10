@@ -5,6 +5,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Exception;
+use App\Models\Carts;
 
 class LoginRegisterModal extends Component
 {
@@ -26,7 +28,6 @@ class LoginRegisterModal extends Component
     }
     public function register()
     {
-        Log::info('register');
         try {
             $this->validate([
                 'first_name' => 'required|string|max:255',
@@ -39,18 +40,16 @@ class LoginRegisterModal extends Component
             return;
         }
 
-        Log::info('register3');
-
         $user = \App\Models\User::create([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
             'password' => \Hash::make($this->password),
         ]);
-        Log::info('register2');
-
 
         Auth::login($user);
+
+        $this->mergeCart();
 
         $this->showModal = false;
         return redirect()->intended('/');
@@ -58,19 +57,50 @@ class LoginRegisterModal extends Component
 
     public function login()
     {
-        $this->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        try {
+            $credentials = ['email' => $this->email, 'password' => $this->password];
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            $this->addError('password', 'Email or password do not match our records.');
+            $this->validate([
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
+
+            if (!Auth::attempt($credentials)) {
+                throw new Exception('Invalid credentials');
+            }
+
+            $this->mergeCart();
+
+            // Authentication passed...
+            $this->showModal = false;
+            return redirect()->intended('/');
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
             return;
         }
+    }
 
-        // Authentication passed...
-        $this->showModal = false;
-        return redirect()->intended('/');
+    private function mergeCart()
+    {
+        $sessionCart = session('guest_cart', []);
+
+        Log::info('Session cart: ' . print_r($sessionCart, true));
+
+        foreach ($sessionCart as $productId => $quantity) {
+            $cart = Carts::firstOrNew([
+                'user_id' => Auth::id(),
+                'product_id' => $productId,
+            ]);
+
+            $cart->quantity += $quantity;
+            $cart->save();
+        }
+
+        // Clear the session cart
+        session()->forget('guest_cart');
+        session()->save();
+
+        Log::info('Session after clearing cart: ' . print_r(session()->all(), true));
     }
 
     public function render()
