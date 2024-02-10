@@ -1,91 +1,141 @@
-<div class="{{ $showModal ? 'fixed inset-0 z-50 overflow-y-auto bg-gray-500 bg-opacity-75 transition-opacity' : 'hidden' }}"
-    aria-labelledby="modal-title" role="dialog" aria-modal="true" wire:click.self="closeModal">
+<div
+    class="{{ $showModal ? 'overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 flex items-center justify-center' : '' }}">
     @if ($showModal)
-        <div class="fixed inset-0 z-50 overflow-y-auto bg-gray-500 bg-opacity-75 transition-opacity"
-            aria-labelledby="modal-title" role="dialog" aria-modal="true" wire:click.self="closeModal">
-            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:items-center sm:p-0">
-                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-                    onclick="event.stopPropagation()">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <div class="sm:flex sm:items-start">
-                            <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                                <h3 class="text-lg leading-6 font-medium text-gray-900 flex justify-center items-center"
-                                    id="modal-title">
-                                    <!-- Dinamically change tab style based on active form -->
-                                    <a class="cursor-pointer mx-2 {{ $form === 'login' ? 'text-blue-500' : 'text-gray-400' }}"
-                                        wire:click="showForm('login')">Login</a>
-                                    <span>|</span>
-                                    <a class="cursor-pointer mx-2 {{ $form === 'register' ? 'text-blue-500' : 'text-gray-400' }}"
-                                        wire:click="showForm('register')">Register</a>
-                                </h3>
-                                <div class="mt-2">
-                                    @if ($form === 'login')
-                                        <!-- Form di login -->
-                                        <form wire:submit.prevent="login"
-                                            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                                            <div class="mb-4">
-                                                <label class="block text-gray-700 text-sm font-bold mb-2"
-                                                    for="email">Email</label>
-                                                <input
-                                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                    type="email" id="email" wire:model="email">
-                                            </div>
-                                            <div class="mb-6">
-                                                <label class="block text-gray-700 text-sm font-bold mb-2"
-                                                    for="password">Password</label>
-                                                <input
-                                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                                                    type="password" id="password" wire:model="password">
-                                            </div>
-                                            <div class="flex items-center justify-between">
-                                                <button
-                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                    type="submit">Login</button>
-                                            </div>
-                                        </form>
-                                    @elseif ($form === 'register')
-                                        <!-- Form di registrazione -->
-                                        <form wire:submit.prevent="register"
-                                            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                                            <div class="mb-4">
-                                                <label class="block text-gray-700 text-sm font-bold mb-2"
-                                                    for="name">Name</label>
-                                                <input
-                                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                    type="text" id="name" wire:model="name">
-                                            </div>
-                                            <div class="mb-4">
-                                                <label class="block text-gray-700 text-sm font-bold mb-2"
-                                                    for="email">Email</label>
-                                                <input
-                                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                    type="email" id="email" wire:model="email">
-                                            </div>
-                                            <div class="mb-6">
-                                                <label class="block text-gray-700 text-sm font-bold mb-2"
-                                                    for="password">Password</label>
-                                                <input
-                                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                                                    type="password" id="password" wire:model="password">
-                                            </div>
-                                            <div class="flex items-center justify-between">
-                                                <button
-                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                                                    type="submit">Register</button>
-                                            </div>
-                                        </form>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <button type="button"
-                            class="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm"
-                            wire:click="closeModal">
-                            Chiudi
+        <div class="fixed inset-0 flex items-center justify-center z-50">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div id="authentication-modal" aria-hidden="true" class="relative w-full max-w-md px-4 mx-auto">
+                <div class="bg-white rounded-lg shadow relative">
+                    <div class="flex justify-end p-2">
+                        <button type="button" wire:click="$set('showModal', false)"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-black rounded-lg text-sm p-1.5 ml-auto inline-flex items-center ">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
                         </button>
                     </div>
+                    @if ($form!='login')
+                    <!-- Registration form goes here -->
+                    <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit.prevent="register">
+                        <h3 class="text-xl font-bold">
+                            Register to
+                            <span class="font-bold text-[#FACB01]">
+                                FitFoodCo
+                            </span>
+                        </h3>
+                        <div>
+                            <label for="first_name" class="text-sm font-medium text-black block mb-2">Your First Name</label>
+                            <input type="text" name="first_name" id="first_name" wire:model="first_name"
+                                class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
+                                placeholder="John" required="">
+                            @error('first_name')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="last_name" class="text-sm font-medium text-black block mb-2">Your Last Name</label>
+                            <input type="text" name="last_name" id="last_name" wire:model="last_name"
+                                class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
+                                placeholder="Doe" required="">
+                            @error('last_name')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="email" class="text-sm font-medium text-black block mb-2">Your email</label>
+                            <input type="email" name="email" id="email" wire:model="email"
+                                class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
+                                placeholder="name@provider.com" required="">
+                            @error('email')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="password" class="text-sm font-medium text-black block mb-2 ">Your password</label>
+                            <input type="password" name="password" id="password" wire:model="password" placeholder="••••••••"
+                                class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
+                                required="">
+                            @error('password')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="password_confirmation" class="text-sm font-medium text-black block mb-2 ">Confirm your password</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" wire:model="password_confirmation" placeholder="••••••••"
+                                class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
+                                required="">
+                            @error('password_confirmation')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <button type="submit"
+                            class="transition-all duration-500 ease-in-out transform hover:scale-110 w-full text-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                            Create your account
+                        </button>
+                        <div class="text-sm font-medium text-gray-500 ">
+                            Already have an account? <a href="#" wire:click="$set('form', 'login')"
+                                class="text-[#FACB01] font-bold hover:underline ">Sign in</a>
+                        </div>
+                    </form>
+                @else
+                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit.prevent="login">
+                            <h3 class="text-xl font-bold">
+                                Sign in to
+                                <span class="font-bold text-[#FACB01]">
+                                    FitFoodCo
+                                </span>
+                            </h3>
+                            <div>
+                                <label for="email" class="text-sm font-medium text-black block mb-2">Your
+                                    email</label>
+                                <input type="email" name="email" id="email"
+                                    class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
+                                    placeholder="name@provider.com" required="">
+                                @error('email')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="password" class="text-sm font-medium text-black block mb-2 ">Your
+                                    password</label>
+                                <input type="password" name="password" id="password" placeholder="••••••••"
+                                    class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
+                                    required="">
+                                @error('password')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="flex justify-between">
+                                <div class="flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <input id="remember" aria-describedby="remember" type="checkbox"
+                                            wire:model="remember"
+                                            class="bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-yellow-300 h-4 w-4 rounded ">
+                                    </div>
+                                    <div class="text-sm ml-3">
+                                        <label for="remember" class="font-medium text-black ">Remember
+                                            me</label>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-sm text-[#FACB01] font-bold hover:underline ">Lost
+                                    Password?</a>
+                            </div>
+                            @if (session()->has('error'))
+                                <div class="text-red-500 text-sm mb-4">{{ session('error') }}</div>
+                            @endif
+                            <button type="submit"
+                                class="transition-all duration-500 ease-in-out transform hover:scale-110 w-full text-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                Login to your account
+                            </button>
+                            <div class="text-sm font-medium text-gray-500 ">
+                                Not registered? <a href="#" wire:click="$set('form', 'register')" class="text-[#FACB01] font-bold hover:underline ">Create account</a>
+                            </div>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
