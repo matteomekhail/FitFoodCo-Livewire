@@ -4,21 +4,21 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginRegisterModal extends Component
 {
     public $showModal = false;
     public $form = 'login';
+    public $first_name = '';
+    public $last_name = '';
     public $email = '';
     public $password = '';
+    public $password_confirmation = '';
+
     public $remember = false;
 
     protected $listeners = ['show-modal' => 'showModal'];
-
-    protected $rules = [
-        'email' => 'required|email',
-        'password' => 'required',
-    ];
 
     public function showModal()
     {
@@ -26,12 +26,20 @@ class LoginRegisterModal extends Component
     }
     public function register()
     {
-        $this->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        Log::info('register');
+        try {
+            $this->validate([
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:6|confirmed',
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::error('Validation error: ' . $e->getMessage());
+            return;
+        }
+
+        Log::info('register3');
 
         $user = \App\Models\User::create([
             'first_name' => $this->first_name,
@@ -39,6 +47,8 @@ class LoginRegisterModal extends Component
             'email' => $this->email,
             'password' => \Hash::make($this->password),
         ]);
+        Log::info('register2');
+
 
         Auth::login($user);
 
