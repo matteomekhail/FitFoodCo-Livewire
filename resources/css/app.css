@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;1000&display=swap");
-@import url("lucide-static/font/lucide.css");
 
 @tailwind base;
 @tailwind components;
@@ -7,10 +6,4 @@
 
 body {
     touch-action: pan-y;
-}
-
-@font-face {
-    font-family: "Lucide";
-    src: url("/fonts/lucide-4Uw_5IKl.woff2?t=170") format("woff2");
-    font-display: swap;
 }
