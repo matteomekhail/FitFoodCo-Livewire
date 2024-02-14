@@ -131,6 +131,34 @@ class ProductsTableSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => null,
             ],
+            [
+                'name' => 'Beef Stroganoff & Rosemary Mash',
+                'description' => 'Beef Stroganoff & Rosemary Mash',
+                'price' => 11.95,
+                'quantity_in_stock' => 0,
+                'calories' => 433,
+                'protein' => 51,
+                'fats' => 15,
+                'carbs' => 23,
+                'active' => true,
+                'image' => 'images\\your_image.webp', // replace with your image path
+                'created_at' => Carbon::now(),
+                'updated_at' => null,
+            ],
+            [
+                'name' => 'CRUMBED CHIPOLTE CHICKEN AND SWEET POTATO',
+                'description' => 'CRUMBED CHIPOLTE CHICKEN AND SWEET POTATO',
+                'price' => 11.95,
+                'quantity_in_stock' => 0,
+                'calories' => 586,
+                'protein' => 46,
+                'fats' => 24,
+                'carbs' => 46,
+                'active' => true,
+                'image' => 'images\\your_image.webp', // replace with your image path
+                'created_at' => Carbon::now(),
+                'updated_at' => null,
+            ],
         ]);
     }
 }
