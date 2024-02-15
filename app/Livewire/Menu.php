@@ -91,7 +91,7 @@ class Menu extends Component
             // ...
 
             'products' => Cache::remember('products', 60, function () {
-                return Product::paginate(10);
+                return Product::paginate(12);
             }),
         ]);
     }

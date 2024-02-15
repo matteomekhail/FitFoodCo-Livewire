@@ -141,12 +141,12 @@ class ProductsTableSeeder extends Seeder
                 'fats' => 15,
                 'carbs' => 23,
                 'active' => true,
-                'image' => 'images\\your_image.webp', // replace with your image path
+                'image' => 'images\\9.webp', // replace with your image path
                 'created_at' => Carbon::now(),
                 'updated_at' => null,
             ],
             [
-                'name' => 'CRUMBED CHIPOLTE CHICKEN AND SWEET POTATO',
+                'name' => 'Crumbed Chipolte Chicken And Sweet Potato',
                 'description' => 'CRUMBED CHIPOLTE CHICKEN AND SWEET POTATO',
                 'price' => 11.95,
                 'quantity_in_stock' => 0,
@@ -155,7 +155,35 @@ class ProductsTableSeeder extends Seeder
                 'fats' => 24,
                 'carbs' => 46,
                 'active' => true,
-                'image' => 'images\\your_image.webp', // replace with your image path
+                'image' => 'images\\2.webp', // replace with your image path
+                'created_at' => Carbon::now(),
+                'updated_at' => null,
+            ],
+            [
+                'name' => 'Beef Lasagne',
+                'description' => 'BEEF LASAGNE',
+                'price' => 11.95,
+                'quantity_in_stock' => 0,
+                'calories' => 478,
+                'protein' => 42,
+                'fats' => 26,
+                'carbs' => 19,
+                'active' => true,
+                'image' => 'images\\5.webp', // replace with your image path
+                'created_at' => Carbon::now(),
+                'updated_at' => null,
+            ],
+            [
+                'name' => 'Pumpkin Ricotta ravioli with creamy sauce',
+                'description' => 'Pumpkin Ricotta ravioli with creamy sauce',
+                'price' => 11.95,
+                'quantity_in_stock' => 0,
+                'calories' => 542,
+                'protein' => 22,
+                'fats' => 12,
+                'carbs' => 84,
+                'active' => true,
+                'image' => 'images\\10.webp', // replace with your image path
                 'created_at' => Carbon::now(),
                 'updated_at' => null,
             ],

@@ -6,7 +6,7 @@
                     class="bg-gradient-to-r from-gray-300 to-white shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 rounded-xl">
                     <div class="w-full h-64 overflow-hidden relative rounded-tl-xl rounded-tr-xl">
                         <img src="{{ $product->image }}" alt="{{ $product->name }} image"
-                            class="w-full h-full object-cover absolute" loading="lazy">
+                        class="w-full h-full object-cover absolute" loading="lazy">
                     </div>
                     <div class="text-center text-black p-2">
                         <p class="capitalize my-1">

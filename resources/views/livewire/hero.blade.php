@@ -16,8 +16,8 @@
                         onclick="location.href='/#menu'">Browse Full Menu</button>
                 </div>
             </div>
-            <div class="lg:mt-20">
-                <img alt="Package" class="rounded-lg" src="/images/pack.webp" />
+            <div class="lg:mt-20 flex justify-center lg:justify-end">
+                <img alt="Package" class="rounded-lg w-full lg:w-3/4" src="/images/hero.webp" />
             </div>
         </div>
     </div>
