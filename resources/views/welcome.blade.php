@@ -18,14 +18,13 @@
 </head>
 
 <body class="overflow-x-hidden bg-white font-body text-sm text-base-content antialiased">
+
     @livewire('navbar')
     @livewire('hero')
     @livewire('menu')
     @include('components.footer')
     @livewire('sidebar-cart')
     @livewireScripts
-    <script>
-    </script>
 </body>
 
 </html>

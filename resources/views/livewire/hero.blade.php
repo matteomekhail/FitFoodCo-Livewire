@@ -1,4 +1,4 @@
-<section class="py-8 lg:py-40 bg-[#FACB01] shadow-2xl" id="home">
+<section class="py-8 lg:pt-60 lg:pb-20 bg-[#FACB01] shadow-2xl" id="home">
     <div class="container">
         <div class="grid gap-12 lg:grid-cols-2">
             <div class="lg:mt-40 text-center lg:text-left">
