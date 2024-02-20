@@ -73,7 +73,8 @@ class LoginRegisterModal extends Component
 
             // Authentication passed...
             $this->showModal = false;
-            return redirect()->intended('/');
+            return redirect()->intended(url()->previous());
+
         } catch (Exception $e) {
             session()->flash('error', $e->getMessage());
             return;
@@ -107,4 +108,9 @@ class LoginRegisterModal extends Component
     {
         return view('livewire.login-register-modal');
     }
+    public function mount($shouldShowModal = false)
+    {
+        $this->showModal = $shouldShowModal;
+    }
+
 }

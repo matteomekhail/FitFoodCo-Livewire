@@ -16,14 +16,8 @@ use App\Http\Controllers\StripeWebhookController;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+
+Route::view('/admin', 'admin');
 
 require __DIR__ . '/auth.php';
