@@ -87,9 +87,25 @@ class SidebarCart extends Component
             'cancel_url' => url('/'),
             'allow_promotion_codes' => true,
             'shipping_address_collection' => [
-                'allowed_countries' => ['AU','NZ'],
+                'allowed_countries' => ['AU', 'NZ'],
             ],
         ]);
+
+        // Creare un ordine nel database
+        $order = auth()->user()->orders()->create([
+            'stripe_id' => $session->id,
+            // Aggiungi qui altri dettagli dell'ordine
+        ]);
+
+        // Aggiungi gli articoli del carrello all'ordine
+        foreach ($cartItems as $item) {
+            $order->items()->create([
+                'product_id' => $item->product_id,
+                'quantity' => $item->quantity,
+                // Aggiungi qui altri dettagli dell'articolo
+            ]);
+        }
+
         return redirect()->away($session->url);
 
     }
