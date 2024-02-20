@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Carts as Cart;
+use Carbon\Carbon;
 
 class Navbar extends Component
 {
@@ -49,10 +50,14 @@ class Navbar extends Component
     private function getNextDeliveryDay()
     {
         $now = now();
-        $dayOfWeek = $now->dayOfWeek;
-        $nextDeliveryDay = $dayOfWeek <= 3 ? 4 : 1; // 4 for Thursday, 1 for Monday
+        $targetDate = Carbon::create(date('Y'), 3, 4, 0, 0, 0); // 4th of March of the current year
 
-        return $now->copy()->next($nextDeliveryDay);
+        // If we've passed the 4th of March this year, get the 4th of March next year
+        if ($now->greaterThan($targetDate)) {
+            $targetDate->addYear();
+        }
+
+        return $targetDate;
     }
     public function getRemainingTimeProperty()
     {

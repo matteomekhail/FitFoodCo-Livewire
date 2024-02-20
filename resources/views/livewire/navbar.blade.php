@@ -4,18 +4,24 @@
     @scroll.window="atTop = (window.pageYOffset < 30) ? false: true"
     style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
     <div class="w-full bg-black text-white py-2 text-center fixed top-0 z-50" wire:poll.1000ms>
-        <p class="text-lg font-bold">Next delivery day:</p>
-        <div class="text-xl font-bold">
-            <span class="px-1">{{ $this->remainingTime['days'] }}</span>
-            <span class="px-1">{{ $this->remainingTime['hours'] }}</span>
-            <span class="px-1">{{ $this->remainingTime['minutes'] }}</span>
-            <span class="px-1">{{ $this->remainingTime['seconds'] }}</span>
-        </div>
-        <div class="text-sm">
-            <span class="px-1">Days</span>
-            <span class="px-1">Hours</span>
-            <span class="px-1">Minutes</span>
-            <span class="px-1">Seconds</span>
+        <p class="text-lg font-bold">Pre-order now for the launch coming in :</p>
+        <div class="flex justify-center text-xl font-bold">
+            <div class="px-1">
+                <span>{{ $this->remainingTime['days'] }}</span>
+                <div class="text-sm">Days</div>
+            </div>
+            <div class="px-1">
+                <span>{{ $this->remainingTime['hours'] }}</span>
+                <div class="text-sm">Hours</div>
+            </div>
+            <div class="px-1">
+                <span>{{ $this->remainingTime['minutes'] }}</span>
+                <div class="text-sm">Minutes</div>
+            </div>
+            <div class="px-1">
+                <span>{{ $this->remainingTime['seconds'] }}</span>
+                <div class="text-sm">Seconds</div>
+            </div>
         </div>
     </div>
     <div class="sticky top-0 z-30 lg:bg-opacity-90 lg:fixed lg:backdrop-blur-lg w-full lg:h-60 h-48 flex items-center shadow-2xl">
