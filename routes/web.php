@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StripeWebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,6 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-    Route::post(
-        'stripe/webhook',
-        '\Laravel\Cashier\Http\Controllers\WebhookController@handleWebhook'
-    );
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+
 require __DIR__ . '/auth.php';

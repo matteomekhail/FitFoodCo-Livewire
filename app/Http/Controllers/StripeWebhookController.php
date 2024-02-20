@@ -2,40 +2,63 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Stripe\Stripe;
-use Stripe\Webhook;
+use Stripe\StripeClient;
 use App\Models\Order;
+use App\Models\OrderProduct;
 
 class StripeWebhookController extends Controller
 {
+    private $stripe;
+
+    public function __construct()
+    {
+        $this->stripe = new StripeClient(env('STRIPE_SECRET'));
+    }
+
     public function handleWebhook(Request $request)
     {
-        // Configurare Stripe
-        Stripe::setApiKey(env('STRIPE_SECRET'));
+        $payload = $request->all();
+        $event = $payload['type'];
+        $data = $payload['data']['object'];
 
-        // Verificare l'evento del webhook
-        $event = Webhook::constructEvent(
-            $request->getContent(),
-            $request->header('Stripe-Signature'),
-            env('STRIPE_WEBHOOK_SECRET')
-        );
-
-        // Gestire l'evento
-        switch ($event->type) {
-            case 'checkout.session.completed':
-                $session = $event->data->object;
-
-                // Creare un nuovo ordine nel database
-                $order = new Order();
-                $order->user_id = auth()->id(); // Assicurati di avere un metodo per ottenere l'ID dell'utente
-                $order->stripe_session_id = $session->id;
-                $order->total = $session->amount_total / 100; // Stripe restituisce l'importo in centesimi
-                $order->save();
-
-                break;
-            // Aggiungere altri casi per gestire altri tipi di eventi
+        if ($event === 'checkout.session.completed') {
+            $this->handleCheckoutSessionCompleted($data);
         }
 
-        return response()->json(['received' => true]);
+        return response()->json(['status' => 'success']);
+    }
+
+    protected function handleCheckoutSessionCompleted($session)
+    {
+        $order = new Order;
+        $order->user_id = $session['client_reference_id'];
+        $order->stripe_session_id = $session['id'];
+        $order->total = $session['amount_total'];
+        $order->save();
+
+        $this->saveSessionLineItems($session['id'], $order->id);
+    }
+
+    protected function saveSessionLineItems($sessionId, $orderId)
+    {
+        $lineItems = $this->stripe->checkout->sessions->allLineItems($sessionId);
+
+        foreach ($lineItems->autoPagingIterator() as $lineItem) {
+            // Assumiamo che il nome del prodotto sia salvato nel campo 'description' dei line_items di Stripe.
+            $productName = $lineItem->description;
+
+            // Trova il product_id basato sul nome del prodotto.
+            $product = \App\Models\Product::where('name', $productName)->first();
+
+            if ($product) {
+                $orderProduct = new OrderProduct;
+                $orderProduct->order_id = $orderId;
+                $orderProduct->product_id = $product->id;
+                $orderProduct->quantity = $lineItem->quantity;
+                $orderProduct->save();
+            } else {
+                // Gestisci il caso in cui il prodotto non viene trovato, ad esempio registrando un errore.
+            }
+        }
     }
 }

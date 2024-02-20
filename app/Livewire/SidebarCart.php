@@ -67,11 +67,11 @@ class SidebarCart extends Component
 
             $line_items[] = [
                 'price_data' => [
-                    'currency' => 'aud', // Cambia 'usd' in 'aud'
+                    'currency' => 'aud',
                     'product_data' => [
                         'name' => $product->name,
                     ],
-                    'unit_amount' => $product->price * 100, // Stripe richiede l'importo in centesimi
+                    'unit_amount' => $product->price * 100,
                 ],
                 'quantity' => $item->quantity,
             ];
@@ -89,23 +89,8 @@ class SidebarCart extends Component
             'shipping_address_collection' => [
                 'allowed_countries' => ['AU', 'NZ'],
             ],
+            'client_reference_id' => auth()->id(),
         ]);
-
-        // Creare un ordine nel database
-        $order = auth()->user()->orders()->create([
-            'stripe_id' => $session->id,
-            // Aggiungi qui altri dettagli dell'ordine
-        ]);
-
-        // Aggiungi gli articoli del carrello all'ordine
-        foreach ($cartItems as $item) {
-            $order->items()->create([
-                'product_id' => $item->product_id,
-                'quantity' => $item->quantity,
-                // Aggiungi qui altri dettagli dell'articolo
-            ]);
-        }
-
         return redirect()->away($session->url);
 
     }

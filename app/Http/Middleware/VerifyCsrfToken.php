@@ -13,5 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        '/stripe/webhook', // Usa il percorso effettivo del tuo webhook
     ];
 }
