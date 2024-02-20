@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Stripe\StripeClient;
 use App\Models\Order;
+use App\Models\Carts as Cart;
 use App\Models\OrderProduct;
 
 class StripeWebhookController extends Controller
@@ -37,6 +38,9 @@ class StripeWebhookController extends Controller
         $order->save();
 
         $this->saveSessionLineItems($session['id'], $order->id);
+
+        $this->clearCart($order->user_id);
+
     }
 
     protected function saveSessionLineItems($sessionId, $orderId)
@@ -60,5 +64,9 @@ class StripeWebhookController extends Controller
                 // Gestisci il caso in cui il prodotto non viene trovato, ad esempio registrando un errore.
             }
         }
+    }
+    protected function clearCart($userId)
+    {
+        Cart::where('user_id', $userId)->delete();
     }
 }
