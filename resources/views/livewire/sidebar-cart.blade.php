@@ -1,5 +1,5 @@
 <div
-    class="{{ $isOpen ? 'fixed inset-0 z-50 transition-all duration-500 ease-in-out transform translate-x-0' : 'fixed inset-0 z-50 transition-all duration-500 ease-in-out transform translate-x-full' }}">
+    class="{{ $isOpen ? 'fixed inset-0 z-50 transition-all duration-500 ease-in-out transform translate-x-0' : 'fixed inset-0 z-30 transition-all duration-500 ease-in-out transform translate-x-full' }}">
     <div class="fixed right-0 top-0 h-full w-full md:w-80 lg:w-[25rem] shadow-2xl p-4 z-50 flex flex-col overflow-auto"
         style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);"a>
         <svg wire:click="$set('isOpen', false)" class="h-6 w-6 absolute top-4 right-4 cursor-pointer"

@@ -1,5 +1,5 @@
 <div
-    class="{{ $showModal ? 'overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 flex items-center justify-center' : '' }}">
+    class="{{ $showModal ? 'overflow-x-hidden overflow-y-auto fixed h-modal md:h-full top-4 left-0 right-0 md:inset-0 z-50 flex items-center justify-center z-50' : '' }}">
     @if ($showModal)
         <div class="fixed inset-0 flex items-center justify-center z-50">
             <div class="absolute inset-0 bg-black opacity-50"></div>
