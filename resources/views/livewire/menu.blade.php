@@ -1,12 +1,39 @@
 <section id="menu" class="py-5 bg-gradient-to-r from-black to-gray-900" id="menu">
     <div class="container mx-auto px-2 sm:px-0">
-        <div class="mt-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <style>
+                .mobile-image {
+                    display: none;
+                    object-position: center;
+                    /* Posizione di default */
+                    /* Default scale */
+                }
+
+                /* Media query per dispositivi con larghezza fino a 640px */
+                @media (max-width: 640px) {
+
+                    /* Nascondi l'immagine per dispositivi più grandi */
+                    .desktop-image {
+                        display: none;
+                    }
+
+                    /* Mostra l'immagine "cropped" per dispositivi mobili */
+                    .mobile-image {
+                        display: block;
+                    }
+                }
+            </style>
             @foreach ($products as $product)
                 <div
                     class="bg-gradient-to-r from-gray-300 to-white shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 rounded-xl">
                     <div class="w-full h-64 overflow-hidden relative rounded-tl-xl rounded-tr-xl">
+                        <!-- Immagine per dispositivi più grandi -->
                         <img src="{{ $product->image }}" alt="{{ $product->name }} image"
-                        class="w-full h-full object-cover absolute" loading="lazy">
+                            class="w-full h-full object-cover absolute product-image desktop-image" loading="lazy">
+                        <!-- Immagine cropped per dispositivi mobili -->
+                        <img src="{{ Str::replaceLast('.webp', 'cropped.webp', $product->image) }}"
+                            alt="{{ $product->name }} image"
+                            class="w-full h-full object-cover absolute product-image mobile-image" loading="lazy">
                     </div>
                     <div class="text-center text-black p-2">
                         <p class="capitalize my-1">

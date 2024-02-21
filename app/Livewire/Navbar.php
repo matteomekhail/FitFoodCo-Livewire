@@ -50,9 +50,9 @@ class Navbar extends Component
     private function getNextDeliveryDay()
     {
         $now = now();
-        $targetDate = Carbon::create(date('Y'), 3, 4, 0, 0, 0); // 4th of March of the current year
+        $targetDate = Carbon::create(date('Y'), 3, 11, 0, 0, 0); // 11th of March of the current year
 
-        // If we've passed the 4th of March this year, get the 4th of March next year
+        // If we've passed the 11th of March this year, get the 11th of March next year
         if ($now->greaterThan($targetDate)) {
             $targetDate->addYear();
         }
