@@ -12,35 +12,40 @@
         @if (count($cartItems) > 0)
         <div class="flex flex-col gap-4 flex-grow overflow-auto pt-4 pb-4">
             @foreach ($cartItems as $item)
-                @if ($item->product)
-                    <div class="relative shadow-sm bg-[#fafafa] flex min-h-32 h-auto rounded-xl" wire:key="{{ $item->product->id }}">
-                        <svg wire:click.stop="dispatch('updateQuantity', [{{ $item->product->id }}, {{ $item->quantity > 0 ? -$item->quantity : 0 }}])"
-                            class="h-6 w-6 absolute top-4 right-4 cursor-pointer text-red-500"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                        <img src="{{ $item->product->image }}" alt="Product image"
-                            class="w-24 h-full object-cover rounded-l-xl">
-                        <div class="pt-4 p-4 ml-4 flex-grow flex flex-col justify-between">
-                            <div class="font-bold text-black text-sm">{{ $item->product->name }}</div>
-                            <div class="flex justify-between">
-                                <span class="text-lg text-black">{{ $item->product->price }}</span>
-                                <div class="flex items-center">
-                                    <button
-                                        wire:click.stop="dispatch('updateQuantity', [{{ $item->product->id }}, -1])"
-                                        class="bg-[#FACB01] text-black hover:text-white focus:ring-[#FAD961] py-2 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">-</button>
-                                    <span class="text-lg text-black mx-4">{{ $item->quantity }}</span>
-                                    <button
-                                        wire:click.stop="dispatch('updateQuantity', [{{ $item->product->id }}, 1])"
-                                        class="bg-[#FACB01] text-black hover:text-white focus:ring-[#FAD961] py-2 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">+</button>
-                                </div>
+            @if ($item->product)
+                <div class="relative shadow-sm bg-[#fafafa] flex min-h-32 h-auto rounded-xl" wire:key="{{ $item->product->id }}">
+                    <!-- Icona del cestino per cancellare, posizionata assolutamente all'interno del container del prodotto -->
+                    <svg wire:click.stop="dispatch('updateQuantity', [{{ $item->product->id }}, {{ $item->quantity > 0 ? -$item->quantity : 0 }}])"
+                        class="h-6 w-6 absolute top-4 right-4 cursor-pointer text-red-500"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    <img src="{{ $item->product->image }}" alt="Product image"
+                        class="w-24 h-full object-cover rounded-l-xl">
+                    <!-- Contenitore per testo del prodotto e pulsanti, con spazio per l'icona del cestino -->
+                    <div class="pt-4 p-4 ml-4 flex-grow flex flex-col justify-between">
+                        <div class="flex-grow">
+                            <!-- Usa 'max-w-[calc(100%-1.5rem)]' per impedire al testo di sovrapporsi all'icona del cestino -->
+                            <div class="font-bold text-black text-sm max-w-[calc(100%-1.5rem)]">{{ $item->product->name }}</div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg text-black">{{ $item->product->price }}</span>
+                            <div class="flex items-center">
+                                <button
+                                    wire:click.stop="dispatch('updateQuantity', [{{ $item->product->id }}, -1])"
+                                    class="bg-[#FACB01] text-black hover:text-white focus:ring-[#FAD961] py-2 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">-</button>
+                                <span class="text-lg text-black mx-4">{{ $item->quantity }}</span>
+                                <button
+                                    wire:click.stop="dispatch('updateQuantity', [{{ $item->product->id }}, 1])"
+                                    class="bg-[#FACB01] text-black hover:text-white focus:ring-[#FAD961] py-2 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none">+</button>
                             </div>
                         </div>
                     </div>
-                @endif
-            @endforeach
+                </div>
+            @endif
+        @endforeach
         </div>
 
         @else
