@@ -20,4 +20,7 @@ Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']
 
 Route::view('/admin', 'admin');
 
+Route::view('/success', 'success');
+
+
 require __DIR__ . '/auth.php';

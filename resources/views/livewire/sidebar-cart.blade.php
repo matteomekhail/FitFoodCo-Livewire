@@ -58,13 +58,15 @@
             @if (count($cartItems) > 0)
                 <div class="flex justify-between mb-4">
                     <span class="text-lg text-black font-bold">Total</span>
-                    <span
-                        class="text-lg text-black font-bold">${{ number_format(
+                    <div>
+                        <span class="text-lg text-black font-bold">${{ number_format(
                             collect($cartItems)->reduce(function ($carry, $item) {
                                 return $carry + ($item->product ? $item->product->price * $item->quantity : 0);
                             }, 0),
                             2,
                         ) }}</span>
+                        <div class="text-sm text-gray-500">+ $9.99 shipping</div>
+                    </div>
                 </div>
                 <button wire:click="checkout"
                     class="bg-white text-black w-full px-4 py-2 rounded-lg text-lg flex justify-center items-center transition-colors duration-200 ease-in-out hover:bg-black hover:text-[#FACB01]">

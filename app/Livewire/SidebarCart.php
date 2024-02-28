@@ -83,12 +83,15 @@ class SidebarCart extends Component
             'payment_method_types' => ['card'],
             'line_items' => $line_items,
             'mode' => 'payment',
-            'success_url' => url('/'),
+            'success_url' => url('/?checkout=success'), // Assicurati che questo URL sia conforme alle tue esigenze di routing e logica di applicazione
             'cancel_url' => url('/'),
             'allow_promotion_codes' => true,
             'shipping_address_collection' => [
                 'allowed_countries' => ['AU', 'NZ'],
             ],
+            'shipping_options' => [[
+                'shipping_rate' => 'shr_1OmZMiK8KCvHYe8JDei4iY3J',
+            ]],
             'client_reference_id' => auth()->id(),
         ]);
         return redirect()->away($session->url);
