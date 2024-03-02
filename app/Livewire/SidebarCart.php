@@ -50,18 +50,24 @@ class SidebarCart extends Component
             return;
         }
 
-        // Configurare Stripe
-        Stripe::setApiKey(config('services.stripe.secret'));
-
-        // Creare un array per contenere le linee di prodotto
-        $line_items = [];
-
-        // Ottenere gli articoli nel carrello
+        // Get the items in the cart
         $cartItems = $this->getCartItems();
 
+        $totalItems = $cartItems->sum('quantity');
 
+        // Check if there are less than 5 items in the cart
+        if ($totalItems < 5) {
+            session()->flash('error', 'Minimum 5 items required');
+            return;
+        }
 
-        // Aggiungere ogni articolo nel carrello come una linea di prodotto
+        // Configure Stripe
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        // Create an array to hold the line items
+        $line_items = [];
+
+        // Add each item in the cart as a line item
         foreach ($cartItems as $item) {
             $product = $item->product;
 
@@ -77,13 +83,12 @@ class SidebarCart extends Component
             ];
         }
 
-
-        // Creare la sessione di checkout
+        // Create the checkout session
         $session = Session::create([
             'payment_method_types' => ['card'],
             'line_items' => $line_items,
             'mode' => 'payment',
-            'success_url' => url('/?checkout=success'), // Assicurati che questo URL sia conforme alle tue esigenze di routing e logica di applicazione
+            'success_url' => url('/success'), // Make sure this URL conforms to your routing and application logic needs
             'cancel_url' => url('/'),
             'allow_promotion_codes' => true,
             'shipping_address_collection' => [
@@ -95,7 +100,6 @@ class SidebarCart extends Component
             'client_reference_id' => auth()->id(),
         ]);
         return redirect()->away($session->url);
-
     }
 
     public function render()

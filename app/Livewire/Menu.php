@@ -10,6 +10,7 @@ use Image;
 use Illuminate\Support\Facades\Log;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 
 class Menu extends Component
@@ -23,7 +24,7 @@ class Menu extends Component
         if (auth()->check()) {
             // Utente autenticato: ottieni quantità dal database
             $userId = auth()->id();
-            $cartItems = Cart::where('user_id', $userId)->get();
+            $cartItems = Cart::with('product')->where('user_id', $userId)->get();
 
             foreach ($cartItems as $cartItem) {
                 $this->productQuantities[$cartItem->product_id] = $cartItem->quantity;
@@ -55,43 +56,55 @@ class Menu extends Component
 
     private function updateAuthenticatedUserCart($productId, $change)
     {
-        $userId = auth()->id();
-        $cartItem = Cart::where('user_id', $userId)->where('product_id', $productId)->first();
+        try {
+            $userId = auth()->id();
+            $cartItem = Cart::where('user_id', $userId)->where('product_id', $productId)->first();
 
-        if ($cartItem) {
-            $cartItem->quantity += $change;
-            $cartItem->quantity > 0 ? $cartItem->save() : $cartItem->delete();
-        } else if ($change > 0) {
-            Cart::create([
-                'user_id' => $userId,
-                'product_id' => $productId,
-                'quantity' => 1
-            ]);
+            if ($cartItem) {
+                $cartItem->quantity += $change;
+                if ($cartItem->quantity > 0) {
+                    $cartItem->save();
+                } else {
+                    $cartItem->delete();
+                }
+            } else if ($change > 0) {
+                Cart::updateOrCreate(
+                    ['user_id' => auth()->id(), 'product_id' => $productId],
+                    ['quantity' => DB::raw("GREATEST(quantity + $change, 0)")]
+                )->where('quantity', 0)->delete();
+            }
+        } catch (\Exception $e) {
+            Log::error("Errore nell'aggiornamento del carrello utente autenticato: " . $e->getMessage());
+            // Gestire l'errore, ad es. inviando un messaggio all'utente
+            session()->flash('error', 'Non è stato possibile aggiornare il carrello.');
         }
     }
 
     private function updateGuestUserCart($productId, $change)
     {
-        $guestCart = session()->get('guest_cart', []);
-        $currentQuantity = $guestCart[$productId] ?? 0;
-        $newQuantity = max($currentQuantity + $change, 0);
+        try {
+            $guestCart = session()->get('guest_cart', []);
+            $currentQuantity = $guestCart[$productId] ?? 0;
+            $newQuantity = max($currentQuantity + $change, 0);
 
-        if ($newQuantity > 0) {
-            $guestCart[$productId] = $newQuantity;
-        } else {
-            unset($guestCart[$productId]);
+            if ($newQuantity > 0) {
+                $guestCart[$productId] = $newQuantity;
+            } else {
+                unset($guestCart[$productId]);
+            }
+
+            session()->put('guest_cart', $guestCart);
+        } catch (\Exception $e) {
+            Log::error("Errore nell'aggiornamento del carrello utente guest: " . $e->getMessage());
+            session()->flash('error', 'Non è stato possibile aggiornare il carrello.');
         }
-
-        session()->put('guest_cart', $guestCart);
     }
 
     public function render()
     {
         return view('livewire.menu', [
-            // ...
-
-            'products' => Cache::remember('products', 60, function () {
-                return Product::paginate(12);
+            'products' => Cache::remember('products', 120, function () {
+                return Product::all();
             }),
         ]);
     }

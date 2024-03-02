@@ -3,28 +3,29 @@
     x-data="{ atTop: false }" :class="{ 'border-base-content/10': atTop, 'border-transparent': !atTop }"
     @scroll.window="atTop = (window.pageYOffset < 30) ? false: true"
     style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
-    <div class="w-full bg-black text-white py-2 text-center fixed top-0 z-50" wire:poll.1000ms>
-        <p class="text-lg font-bold">Pre-order now for the launch coming in :</p>
-        <div class="flex justify-center text-xl font-bold">
-            <div class="px-1">
-                <span>{{ $this->remainingTime['days'] }}</span>
-                <div class="text-sm">Days</div>
-            </div>
-            <div class="px-1">
-                <span>{{ $this->remainingTime['hours'] }}</span>
-                <div class="text-sm">Hours</div>
-            </div>
-            <div class="px-1">
-                <span>{{ $this->remainingTime['minutes'] }}</span>
-                <div class="text-sm">Minutes</div>
-            </div>
-            <div class="px-1">
-                <span>{{ $this->remainingTime['seconds'] }}</span>
-                <div class="text-sm">Seconds</div>
+    <div
+        class="sticky top-0 z-30 lg:bg-opacity-90 lg:fixed lg:backdrop-blur-lg w-full lg:h-60 h-48 flex items-center shadow-2xl">
+        <div class="w-full bg-black text-white py-2 text-center fixed top-0 z-50">
+            <p class="text-lg font-bold">Pre-order now for the launch coming in:</p>
+            <div class="flex justify-center text-xl font-bold" wire:ignore>
+                <div class="px-1">
+                    <span id="days"></span>
+                    <div class="text-sm">Days</div>
+                </div>
+                <div class="px-1">
+                    <span id="hours"></span>
+                    <div class="text-sm">Hours</div>
+                </div>
+                <div class="px-1">
+                    <span id="minutes"></span>
+                    <div class="text-sm">Minutes</div>
+                </div>
+                <div class="px-1">
+                    <span id="seconds"></span>
+                    <div class="text-sm">Seconds</div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="sticky top-0 z-30 lg:bg-opacity-90 lg:fixed lg:backdrop-blur-lg w-full lg:h-60 h-48 flex items-center shadow-2xl">
         <div class="container">
             <nav class="navbar px-0">
                 <div class="navbar-start pt-20 gap-2">
@@ -113,6 +114,43 @@
             function toggleSidebarEvent() {
                 window.dispatchEvent(new CustomEvent('toggleSidebar'));
             }
+
+            function getNextMarch11(currentDate) {
+                let year = currentDate.getFullYear();
+                // Imposta l'11 marzo per l'anno corrente
+                let march11 = new Date(year, 2, 11); // I mesi sono da 0 a 11 in JavaScript, quindi 2 = marzo
+
+                // Se l'11 marzo di quest'anno è già passato, usa l'11 marzo dell'anno prossimo
+                if (currentDate > march11) {
+                    march11 = new Date(year + 1, 2, 11);
+                }
+
+                return march11;
+            }
+
+            function updateCountdown() {
+                const now = new Date();
+                const targetDate = getNextMarch11(now);
+                const distance = targetDate - now;
+
+                // Calcolo giorni, ore, minuti e secondi
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Visualizza il risultato
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            }
+
+            // Aggiorna il countdown ogni 1 secondo
+            setInterval(updateCountdown, 1000);
+
+            // Aggiorna il countdown ogni 1 secondo
+            setInterval(updateCountdown, 1000);
         </script>
     </div>
 </div>
