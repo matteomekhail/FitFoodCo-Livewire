@@ -2,7 +2,7 @@
     class="sticky top-0 z-30 lg:bg-opacity-90 lg:fixed lg:backdrop-blur-lg w-full lg:h-60 h-48 flex items-center shadow-2xl"
     x-data="{ atTop: false }" :class="{ 'border-base-content/10': atTop, 'border-transparent': !atTop }"
     @scroll.window="atTop = (window.pageYOffset < 30) ? false: true"
-    style="background-image: radial-gradient(at top left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
+    style="background-image: linear-gradient(to bottom, #FACB01 0%, #FAD961 100%);">
     <div
         class="sticky top-0 z-30 lg:bg-opacity-90 lg:fixed lg:backdrop-blur-lg w-full lg:h-60 h-48 flex items-center shadow-2xl">
         <div class="w-full bg-black text-white py-2 text-center fixed top-0 z-50">
@@ -32,20 +32,22 @@
                     <div class="flex-none lg:hidden">
                         <label for="my-drawer" aria-label="open sidebar" class="btn btn-square btn-ghost"
                             style="color: black !important;">
-                            <i class="icon-menu inline-block text-xl"></i>
-                        </label>
+                            <i class="fas fa-bars text-xl text-black"></i> </label>
                     </div>
-
                     <!-- Navbar Brand logo -->
                     <img class="w-50 md:w-40 lg:w-60 h-auto text-center tracking-tighter"
                         src="/images/logo-removebg.webp" alt="FitFoodCo" width="240" height="160" />
-                    <div class="lg:hidden ml-auto relative">
-                        <div class="font-medium pt-1 text-black">
+                    <div class="lg:hidden ml-auto relative flex justify-end "> <!-- Modifica qui per mobile -->
+                        <div class="font-medium pt-1 text-black flex gap-8"> <!-- Aggiunto flex e gap -->
+                            <button onclick="toggleSidebarEvent()" aria-label="User account">
+                                <i class="fas fa-user"></i>
+                            </button>
                             <button onclick="toggleSidebarEvent()" aria-label="Shopping cart">
                                 <i class="fas fa-shopping-cart"></i>
                                 @if ($cartItemCount > 0)
                                     <span
-                                        class="absolute right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center left-2 bottom-2">
+                                        class="absolute right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
+                                        style="transform: translate(25%, -50%);"> <!-- Modifica posizionamento -->
                                         {{ $cartItemCount }}
                                     </span>
                                 @endif
@@ -53,12 +55,15 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="navbar-center hidden lg:flex ">
+                <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal menu-sm gap-2 px-1 lg:pl-80 text-black pt-20">
                         <li class="font-medium"><a href="/">Home</a></li>
                         <li class="font-medium"><a href="/#services">Menu</a></li>
-                        <li class="font-medium"><a href="/#visitUs">Visit Us</a></li>
+                        <li class="font-medium pt-1 relative mr-4"> <!-- Inserisci icona utente per desktop qui -->
+                            <button onclick="toggleSidebarEvent()" aria-label="User account">
+                                <i class="fas fa-user"></i>
+                            </button>
+                        </li>
                         <li class="font-medium pt-1 relative">
                             <button onclick="toggleSidebarEvent()" aria-label="Open shopping cart">
                                 <i class="fas fa-shopping-cart"></i>
@@ -89,24 +94,16 @@
                         </li>
                         <li class="font-medium"><a href="/">Home</a></li>
                         <li class="font-medium"><a href="/#menu">Menu</a></li>
-                        <li class="font-medium"><a href="/#visitUs">Visit Us</a></li>
                     </ul>
                 </div>
             </div>
 
         </div>
         <script>
-            document.querySelector('a[href="/#visitUs"]').addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: document.querySelector('#menu').offsetTop + 100, // 100 is the offset from the top
-                    behavior: 'smooth'
-                });
-            });
             document.querySelector('a[href="/#menu"]').addEventListener('click', function(e) {
                 e.preventDefault();
                 window.scrollTo({
-                    top: document.querySelector('#visitUs').offsetTop - 30, // 100 is the offset from the top
+                    top: document.querySelector('#menu').offsetTop + 100, // 100 is the offset from the top
                     behavior: 'smooth'
                 });
             });
@@ -117,15 +114,15 @@
 
             function getNextMarch11(currentDate) {
                 let year = currentDate.getFullYear();
-                // Imposta l'11 marzo per l'anno corrente
-                let march11 = new Date(year, 2, 11); // I mesi sono da 0 a 11 in JavaScript, quindi 2 = marzo
+                // Imposta il 25 marzo per l'anno corrente
+                let march25 = new Date(year, 2, 25); // I mesi sono da 0 a 11 in JavaScript, quindi 2 = marzo
 
-                // Se l'11 marzo di quest'anno è già passato, usa l'11 marzo dell'anno prossimo
-                if (currentDate > march11) {
-                    march11 = new Date(year + 1, 2, 11);
+                // Se il 25 marzo di quest'anno è già passato, usa il 25 marzo dell'anno prossimo
+                if (currentDate > march25) {
+                    march25 = new Date(year + 1, 2, 25);
                 }
 
-                return march11;
+                return march25;
             }
 
             function updateCountdown() {

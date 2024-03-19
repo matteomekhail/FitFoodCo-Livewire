@@ -1,5 +1,5 @@
 <footer class="relative after:shadow-md after:absolute"
-    style="background-image: radial-gradient(at bottom left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
+    style="background-image: linear-gradient(to bottom, #FACB01 0%, #FAD961 100%);">
     <div class="container mx-auto w-full max-w-screen-xl px-4 pt-10">
         <div class="flex flex-wrap justify-between mb-8">
 

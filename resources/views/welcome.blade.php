@@ -17,10 +17,11 @@
     @livewireStyles
 </head>
 
-<body class="overflow-x-hidden bg-white font-body text-sm text-base-content antialiased ">
+<body class="overflow-x-hidden font-body text-sm text-base-content antialiased ">
 
     @livewire('navbar')
     @livewire('hero')
+    @livewire('membership')
     @livewire('menu')
     @include('components.footer')
     @livewire('sidebar-cart')

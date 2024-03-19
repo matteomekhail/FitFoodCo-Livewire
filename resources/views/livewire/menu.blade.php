@@ -1,4 +1,4 @@
-<section id="menu" class="py-5 bg-gradient-to-r from-black to-gray-900" id="menu">
+<section id="menu" class="py-5" style="background: linear-gradient(to bottom, #000 0%, #000 75%, #FACB01 100%);" id="menu">
     <div class="container mx-auto px-2 sm:px-0">
         <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <style>
@@ -25,7 +25,7 @@
             </style>
             @foreach ($products as $product)
                 <div
-                    class="bg-gradient-to-r from-gray-300 to-white shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 rounded-xl">
+                    class="bg-gradient-to-r from-gray-300 to-white transform transition-all duration-300 ease-in-out hover:scale-105 rounded-xl">
                     <div class="w-full h-64 overflow-hidden relative rounded-tl-xl rounded-tr-xl">
                         <!-- Immagine per dispositivi più grandi -->
                         <img src="{{ $product->image }}" alt="{{ $product->name }} image"
