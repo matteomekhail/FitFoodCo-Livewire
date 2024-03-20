@@ -19,24 +19,17 @@
 
 <body class="overflow-x-hidden font-body text-sm text-base-content antialiased "
     style="background-image: radial-gradient(at bottom left, #FACB01 0%, #FAD961 50%, #FACB01 100%);">
-
-@php
-    $currentDay = now()->dayOfWeek;
-    $currentHour = now()->hour;
-@endphp
-
-<div class="flex items-center justify-center h-screen">
-    <div class="text-center">
-        <h1 class="text-2xl font-bold mb-2">Thank you for your order!</h1>
-        @if ($currentDay < \Carbon\Carbon::FRIDAY || ($currentDay == \Carbon\Carbon::FRIDAY && $currentHour < 12))
-            <p>Your order will be shipped on the next delivery day.</p>
-        @else
-            <p>Your order will be shipped on the next week delivery day.</p>
-        @endif
-        <a href="/" class="mt-4 inline-block bg-black text-white py-2 px-4 rounded">Return to Home</a>
+    <div class="flex items-center justify-center h-screen">
+        <div class="text-center">
+            <h1 class="text-2xl font-bold mb-2">Thank you for your order!</h1>
+            @if (now()->dayOfWeek < 5 || (now()->dayOfWeek == 5 && now()->hour < 12))
+                <p>Your order will be shipped on the next delivery day.</p>
+            @else
+                <p>Your order will be shipped on the next week delivery day.</p>
+            @endif
+            <a href="/" class="mt-4 inline-block bg-black text-white py-2 px-4 rounded">Return to Home</a>
+        </div>
     </div>
-</div>
-
 </body>
 
 </html>
