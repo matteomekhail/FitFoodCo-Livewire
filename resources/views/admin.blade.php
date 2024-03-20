@@ -18,14 +18,10 @@
 </head>
 
 <body class="overflow-x-hidden bg-white font-body text-sm text-base-content antialiased">
-    @guest
-    @livewire('login-register-modal', ['shouldShowModal' => Auth::guest()])
-    <!-- Include your login form here -->
-    @endguest
-
     @auth
         <!-- The rest of your page for authenticated users -->
         <!-- Include your admin components here -->
+        @livewire('navbar')
         @livewire('orders')
     @endauth
 

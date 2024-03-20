@@ -20,17 +20,23 @@ class Membership extends Component
 
         $session = StripeSession::create([
             'payment_method_types' => ['card'],
-            'line_items' => [[
-                'price_data' => [
-                    'currency' => 'usd',
-                    'product_data' => [
-                        'name' => $this->getPlanName($plan),
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'aud',
+                        'product_data' => [
+                            'name' => $this->getPlanName($plan),
+                        ],
+                        'recurring' => [
+                            'interval' => 'week',
+                            'interval_count' => 1,
+                        ],
+                        'unit_amount' => $this->getPlanPrice($plan),
                     ],
-                    'unit_amount' => $this->getPlanPrice($plan),
-                ],
-                'quantity' => 1,
-            ]],
-            'mode' => 'payment',
+                    'quantity' => 1,
+                ]
+            ],
+            'mode' => 'subscription',
             'success_url' => url('/success'), // Make sure this URL conforms to your routing and application logic needs
             'cancel_url' => Url('/'), // Assicurati di sostituire 'cancel' con il nome della tua route di cancellazione
         ]);

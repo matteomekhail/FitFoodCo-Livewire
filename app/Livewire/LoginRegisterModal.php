@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use App\Models\Carts;
-use Illuminate\Support\Facades\Hash;
 
 class LoginRegisterModal extends Component
 {
@@ -45,9 +44,7 @@ class LoginRegisterModal extends Component
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
-            // ...
-
-                        'password' => Hash::make($this->password),
+            'password' => \Hash::make($this->password),
         ]);
 
         Auth::login($user);

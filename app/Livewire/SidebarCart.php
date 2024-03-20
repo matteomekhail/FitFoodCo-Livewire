@@ -12,8 +12,6 @@ class SidebarCart extends Component
 {
     public $isOpen = false;
     protected $listeners = ['toggleSidebar' => 'toggleCartSidebar', 'updateQuantity' => 'refreshItem'];
-    public $cartItems = [];
-
     public function getCartItems()
     {
         if (auth()->check()) {

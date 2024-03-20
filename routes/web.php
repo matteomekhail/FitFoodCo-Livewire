@@ -18,7 +18,9 @@ Route::view('/', 'welcome');
 
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 
-Route::view('/admin', 'admin');
+Route::get('/admin', function () {
+    return view('admin');
+})->middleware('admin');
 
 Route::view('/success', 'success');
 

@@ -3,7 +3,8 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\OrderProduct;
+use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 class Orders extends Component
 {
@@ -11,11 +12,13 @@ class Orders extends Component
 
     public function mount()
     {
-        $this->orders = OrderProduct::all();
+        $this->orders = Order::with(['user', 'orderProducts.product'])->get();
     }
 
     public function render()
     {
-        return view('livewire.orders');
+        return view('livewire.orders', [
+            'orders' => $this->orders,
+        ]);
     }
 }
