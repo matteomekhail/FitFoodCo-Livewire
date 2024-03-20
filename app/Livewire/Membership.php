@@ -58,9 +58,9 @@ class Membership extends Component
     private function getPlanPrice($plan)
     {
         $prices = [
-            'gourmet' => 5000, // Prezzo in centesimi, es: $50.00
-            'premium' => 7500, // Prezzo in centesimi, es: $75.00
-            'deluxe' => 10000, // Prezzo in centesimi, es: $100.00
+            'gourmet' => 11352,
+            'premium' => 16132,
+            'deluxe' => 20000,
         ];
 
         return $prices[$plan] ?? 0;

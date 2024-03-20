@@ -9,7 +9,6 @@
                         <i class="fas fa-utensils fa-3x mb-4 text-orange-800"></i>
                         <h2 class="text-2xl mb-2 text-orange-800 font-serif">Gourmet Membership</h2>
                         <p class="mb-2 text-lg text-orange-800">Enjoy 10 gourmet meals a week with a 5% discount.</p>
-                        <p class="mb-2 text-sm text-orange-800">An unparalleled culinary experience, right at your home.
                         </p>
                     </div>
                     <button wire:click="checkout('gourmet')"
@@ -25,7 +24,6 @@
                         <i class="fas fa-utensils fa-3x mb-4 text-yellow-800"></i>
                         <h2 class="text-2xl mb-2 text-yellow-800 font-serif">Premium Membership</h2>
                         <p class="mb-2 text-lg text-yellow-800">Offers 15 meals a week with a 10% discount.</p>
-                        <p class="mb-2 text-sm text-yellow-800">For food lovers who don't want to give up variety.</p>
                     </div>
                     <button wire:click="checkout('premium')"
                         class="btn mt-4 self-center bg-yellow-800 hover:bg-yellow-500 text-white transition-all duration-500 ease-in-out rounded-full py-3 px-6 text-sm tracking-wider border-none focus:outline-none">Subscribe
@@ -40,7 +38,6 @@
             <i class="fas fa-utensils fa-3x mb-4 text-red-800"></i>
             <h2 class="text-2xl mb-2 text-red-800 font-serif">Deluxe Membership</h2>
         <p class="mb-2 text-lg text-red-800">Offers 20 meals a week and each meal only costs $10.</p>
-        <p class="mb-2 text-sm text-red-800">For true gourmands who want the highest quality every day.
         </p>
     </div>
     <button wire:click="checkout('deluxe')"
