@@ -12,7 +12,7 @@ class Orders extends Component
 
     public function mount()
     {
-        $this->orders = Order::with(['user', 'orderProducts.product'])->get();
+        $this->orders = Order::with(['user', 'orderProducts.product', 'address'])->orderBy('created_at', 'desc')->get();
     }
 
     public function render()
@@ -21,4 +21,5 @@ class Orders extends Component
             'orders' => $this->orders,
         ]);
     }
+
 }

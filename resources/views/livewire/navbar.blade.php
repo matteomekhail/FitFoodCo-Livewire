@@ -39,9 +39,15 @@
                         src="/images/logo-removebg.webp" alt="FitFoodCo" width="240" height="160" />
                     <div class="lg:hidden ml-auto relative flex justify-end "> <!-- Modifica qui per mobile -->
                         <div class="font-medium pt-1 text-black flex gap-8"> <!-- Aggiunto flex e gap -->
-                            <button onclick="toggleSidebarEvent()" aria-label="User account">
-                                <i class="fas fa-user"></i>
-                            </button>
+                            @if (Auth::check())
+                                <button wire:click="$dispatch('openModal', 'user-modal')" aria-label="User account">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            @else
+                                <button wire:click="$dispatch('show-modal')" aria-label="User account">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            @endif
                             <button onclick="toggleSidebarEvent()" aria-label="Shopping cart">
                                 <i class="fas fa-shopping-cart"></i>
                                 @if ($cartItemCount > 0)
@@ -59,10 +65,16 @@
                     <ul class="menu menu-horizontal menu-sm gap-2 px-1 lg:pl-80 text-black pt-20">
                         <li class="font-medium"><a href="/">Home</a></li>
                         <li class="font-medium"><a href="/#services">Menu</a></li>
-                        <li class="font-medium pt-1 relative mr-4"> <!-- Inserisci icona utente per desktop qui -->
-                            <button onclick="toggleSidebarEvent()" aria-label="User account">
-                                <i class="fas fa-user"></i>
-                            </button>
+                        <li class="font-medium pt-1 relative mr-4">
+                            @if (Auth::check())
+                                <button wire:click="$dispatch('openModal', 'user-modal')" aria-label="User account">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            @else
+                                <button wire:click="$dispatch('show-modal')" aria-label="User account">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            @endif
                         </li>
                         <li class="font-medium pt-1 relative">
                             <button onclick="toggleSidebarEvent()" aria-label="Open shopping cart">

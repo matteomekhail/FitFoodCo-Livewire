@@ -6,6 +6,7 @@ use Stripe\StripeClient;
 use App\Models\Order;
 use App\Models\Carts as Cart;
 use App\Models\OrderProduct;
+use App\Models\Address;
 
 class StripeWebhookController extends Controller
 {
@@ -39,8 +40,18 @@ class StripeWebhookController extends Controller
 
         $this->saveSessionLineItems($session['id'], $order->id);
 
-        $this->clearCart($order->user_id);
+    // Salva l'indirizzo
+    if (isset($session['shipping']['address'])) {
+        $address = new Address;
+        $address->order_id = $order->id;
+        $address->street = $session['shipping']['address']['line1'];
+        $address->city = $session['shipping']['address']['city'];
+        $address->state = $session['shipping']['address']['state'];
+        $address->zip = $session['shipping']['address']['postal_code'];
+        $address->save();
+    }
 
+        $this->clearCart($order->user_id);
     }
 
     protected function saveSessionLineItems($sessionId, $orderId)

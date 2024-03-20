@@ -15,6 +15,11 @@
                     @endif
                     <p class="card-text"><strong>Order Date:</strong> {{ $order->created_at->toFormattedDateString() }}
                     </p>
+                    @if ($order->address)
+                        <p class="card-text"><strong>Address:</strong> {{ $order->address->street }}, {{ $order->address->city }}, {{ $order->address->state }}, {{ $order->address->zip }}</p>
+                    @else
+                        <p class="card-text"><strong>Address:</strong> Not available</p>
+                    @endif
                     <p class="card-text"><strong>Products:</strong></p>
                     <div class="flex flex-wrap space-x-4">
                         @foreach ($order->orderProducts as $orderProduct)

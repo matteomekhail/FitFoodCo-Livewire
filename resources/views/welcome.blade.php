@@ -26,6 +26,7 @@
     @include('components.footer')
     @livewire('sidebar-cart')
     @livewire('LoginRegisterModal')
+    @livewire('userDetailsModal')
     @livewireScripts
 </body>
 
