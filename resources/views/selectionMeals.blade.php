@@ -20,13 +20,11 @@
 <body class="overflow-x-hidden font-body text-sm text-base-content antialiased ">
 
     @livewire('navbar')
-    @livewire('hero')
-    @livewire('membership')
-    @livewire('menu')
-    @include('components.footer')
+    @livewire('MealSelectionModal')
     @livewire('sidebar-cart')
     @livewire('LoginRegisterModal')
     @livewire('UserDetailsModal')
+    @include('components.footer')
     @livewireScripts
 </body>
 

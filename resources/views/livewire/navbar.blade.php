@@ -6,7 +6,7 @@
     <div
         class="sticky top-0 z-30 lg:bg-opacity-90 lg:fixed lg:backdrop-blur-lg w-full lg:h-60 h-48 flex items-center shadow-2xl">
         <div class="w-full bg-black text-white py-2 text-center fixed top-0 z-50">
-            <p class="text-lg font-bold">Pre-order now for the launch coming in:</p>
+            <p class="text-lg font-bold">Next delivery day:</p>
             <div class="flex justify-center text-xl font-bold" wire:ignore>
                 <div class="px-1">
                     <span id="days"></span>
@@ -40,7 +40,7 @@
                     <div class="lg:hidden ml-auto relative flex justify-end "> <!-- Modifica qui per mobile -->
                         <div class="font-medium pt-1 text-black flex gap-8"> <!-- Aggiunto flex e gap -->
                             @if (Auth::check())
-                                <button onclick="" aria-label="User account">
+                                <button wire:click="$dispatch('openUserModal')" aria-label="User account">
                                     <i class="fas fa-user"></i>
                                 </button>
                             @else
@@ -58,38 +58,50 @@
                                     </span>
                                 @endif
                             </button>
+                            @if (Auth::check() && Auth::user()->hasMembership())
+                                <a href="/meals" aria-label="Meals">
+                                    <i class="fas fa-utensils"></i>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
-                <div class="navbar-center hidden lg:flex">
-                    <ul class="menu menu-horizontal menu-sm gap-2 px-1 lg:pl-80 text-black pt-20">
-                        <li class="font-medium"><a href="/">Home</a></li>
-                        <li class="font-medium"><a href="/#services">Menu</a></li>
-                        <li class="font-medium pt-1 relative mr-4">
-                            @if (Auth::check())
-                                <button onclick="toggleSidebarEvent()" aria-label="User account">
-                                    <i class="fas fa-user"></i>
-                                </button>
-                            @else
-                                <button wire:click="$dispatch('show-modal')" aria-label="User account">
-                                    <i class="fas fa-user"></i>
-                                </button>
-                            @endif
-                        </li>
-                        <li class="font-medium pt-1 relative">
-                            <button onclick="toggleSidebarEvent()" aria-label="Open shopping cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                @if ($cartItemCount > 0)
-                                    <span
-                                        class="absolute right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
-                                        style="top: -6px;">
-                                        {{ $cartItemCount }}
-                                    </span>
-                                @endif
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+<div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal menu-sm gap-2 px-1 lg:pl-80 text-black pt-20 flex justify-between">
+        <li class="font-medium"><a href="/">Home</a></li>
+        <li class="font-medium"><a href="/#services">Menu</a></li>
+        <li class="font-medium pt-1 relative">
+            @if (Auth::check())
+                <button wire:click="$dispatch('openUserModal')" aria-label="User account">
+                    <i class="fas fa-user"></i>
+                </button>
+            @else
+                <button wire:click="$dispatch('show-modal')" aria-label="User account">
+                    <i class="fas fa-user"></i>
+                </button>
+            @endif
+        </li>
+        <li class="font-medium pt-1 relative">
+            <button onclick="toggleSidebarEvent()" aria-label="Open shopping cart">
+                <i class="fas fa-shopping-cart"></i>
+                @if ($cartItemCount > 0)
+                    <span
+                        class="absolute right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
+                        style="top: -6px;">
+                        {{ $cartItemCount }}
+                    </span>
+                @endif
+            </button>
+        </li>
+        @if (Auth::check() && Auth::user()->hasMembership())
+            <li class="font-medium pt-1 relative">
+                <a href="/meals" aria-label="Meals">
+                    <i class="fas fa-utensils"></i>
+                </a>
+            </li>
+        @endif
+    </ul>
+</div>
             </nav>
 
             <!-- sm screen menu (drawer) -->
@@ -124,22 +136,17 @@
                 window.dispatchEvent(new CustomEvent('toggleSidebar'));
             }
 
-            function getNextMarch11(currentDate) {
-                let year = currentDate.getFullYear();
-                // Imposta il 25 marzo per l'anno corrente
-                let march25 = new Date(year, 2, 25); // I mesi sono da 0 a 11 in JavaScript, quindi 2 = marzo
-
-                // Se il 25 marzo di quest'anno è già passato, usa il 25 marzo dell'anno prossimo
-                if (currentDate > march25) {
-                    march25 = new Date(year + 1, 2, 25);
-                }
-
-                return march25;
+            function getNextMonday(currentDate) {
+                let day = currentDate.getDay();
+                let diff = (day < 1) ? 1 - day : 7 - day; // 1 = lunedì
+                let nextMonday = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + diff, 23,
+                    59, 59); // Aggiungi il numero di giorni mancanti per arrivare al prossimo lunedì alle 23:59:59
+                return nextMonday;
             }
 
             function updateCountdown() {
                 const now = new Date();
-                const targetDate = getNextMarch11(now);
+                const targetDate = getNextMonday(now);
                 const distance = targetDate - now;
 
                 // Calcolo giorni, ore, minuti e secondi

@@ -7,7 +7,7 @@ use App\Models\Carts as Cart;
 use App\Models\Product;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
-
+use Auth;
 class SidebarCart extends Component
 {
     public $isOpen = false;
@@ -97,6 +97,7 @@ class SidebarCart extends Component
                 'shipping_rate' => 'shr_1OmZMiK8KCvHYe8JDei4iY3J',
             ]],
             'client_reference_id' => auth()->id(),
+            'customer_email' => Auth::user()->email, // Add this line
         ]);
         return redirect()->away($session->url);
     }

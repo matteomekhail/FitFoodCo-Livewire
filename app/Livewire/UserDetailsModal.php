@@ -3,20 +3,25 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class UserDetailsModal extends Component
 {
+    public $isOpen = false;
+    public $user;
 
-    public $open = false;
-    public function save()
+    protected $listeners = ['openUserModal' => 'openModal'];
+
+    public function openModal()
     {
-        // Qui inserire la logica per salvare i dettagli dell'utente
-
-        $this->open = false;
+        $this->isOpen = true;
+        $this->user = Auth::user();
     }
-    public function mount()
+
+    public function logout()
     {
-        $this->open = true;
+        auth()->logout();
+    return redirect('/');
     }
 
     public function render()

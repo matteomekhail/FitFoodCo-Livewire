@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Stripe\StripeClient;
 use App\Models\Order;
 use App\Models\Carts as Cart;
+use App\Models\User;
 use App\Models\OrderProduct;
 use App\Models\Address;
 
@@ -23,11 +24,34 @@ class StripeWebhookController extends Controller
         $event = $payload['type'];
         $data = $payload['data']['object'];
 
-        if ($event === 'checkout.session.completed') {
-            $this->handleCheckoutSessionCompleted($data);
+        switch ($event) {
+            case 'checkout.session.completed':
+                if (isset ($data['mode']) && $data['mode'] === 'subscription') {
+                    $this->handleSubscriptionSessionCompleted($data);
+                } else {
+                    $this->handleCheckoutSessionCompleted($data);
+                }
+                break;
+            case 'invoice.payment_failed':
+                $this->handlePaymentFailed($data);
+                break;
+            default:
+                break;
+        }
+        return response()->json(['status' => 'success']);
+    }
+
+    protected function handlePaymentFailed($invoice)
+    {
+        $user = User::where('stripe_id', $invoice['customer'])->first();
+
+        if (!$user) {
+            \Log::warning('Utente non trovato con Stripe ID: ' . $invoice['customer']);
+            return;
         }
 
-        return response()->json(['status' => 'success']);
+        $user->membership = null;
+        $user->save();
     }
 
     protected function handleCheckoutSessionCompleted($session)
@@ -40,18 +64,80 @@ class StripeWebhookController extends Controller
 
         $this->saveSessionLineItems($session['id'], $order->id);
 
-    // Salva l'indirizzo
-    if (isset($session['shipping']['address'])) {
-        $address = new Address;
-        $address->order_id = $order->id;
-        $address->street = $session['shipping']['address']['line1'];
-        $address->city = $session['shipping']['address']['city'];
-        $address->state = $session['shipping']['address']['state'];
-        $address->zip = $session['shipping']['address']['postal_code'];
-        $address->save();
-    }
+        // Salva l'indirizzo
+        if (isset ($session['shipping_details']['address'])) {
+            $address = new Address;
+            $address->order_id = $order->id;
+            $address->street = $session['shipping_details']['address']['line1'];
+            $address->city = $session['shipping_details']['address']['city'];
+            $address->state = $session['shipping_details']['address']['state'];
+            $address->zip = $session['shipping_details']['address']['postal_code'];
+            $address->save();
+        }
 
         $this->clearCart($order->user_id);
+    }
+    protected function handleSubscriptionSessionCompleted($session)
+    {
+        $user = User::where('email', $session['customer_email'])->first();
+
+        if (!$user) {
+            \Log::warning('Utente non trovato con email: ' . $session['customer_email']);
+            return response()->json(['error' => 'Utente non trovato'], 404);
+        }
+
+        $subscriptionId = $session['subscription'];
+        if (!$subscriptionId) {
+            \Log::error('ID sottoscrizione mancante nella sessione: ' . $session['id']);
+            return response()->json(['error' => 'ID sottoscrizione mancante'], 400);
+        }
+
+        try {
+            $subscription = $this->stripe->subscriptions->retrieve($subscriptionId);
+        } catch (\Exception $e) {
+            \Log::error('Errore nel recupero della sottoscrizione: ' . $e->getMessage());
+            return response()->json(['error' => 'Errore nel recupero della sottoscrizione'], 500);
+        }
+
+        $productId = $subscription->items->data[0]->plan->product;
+
+        try {
+            $product = $this->stripe->products->retrieve($productId);
+        } catch (\Exception $e) {
+            \Log::error('Errore nel recupero del prodotto: ' . $e->getMessage());
+            return response()->json(['error' => 'Errore nel recupero del prodotto'], 500);
+        }
+
+        $productName = $product->name; // Ora hai il nome del prodotto
+
+        $membershipType = $this->mapProductNameToMembershipType($productName);
+
+        if (!$membershipType) {
+            \Log::warning('Membership non identificabile per il prodotto: ' . $productName);
+            return response()->json(['error' => 'Membership non identificabile'], 400);
+        }
+
+        $user->membership = $membershipType;
+        $user->save();
+
+        $this->clearMealSelection($user->id);
+
+        return response()->json(['success' => 'Membership aggiornata correttamente']);
+    }
+
+    private function clearMealSelection($userId)
+    {
+        \App\Models\MealSelection::where('user_id', $userId)->delete();
+    }
+
+    private function mapProductNameToMembershipType($productName)
+    {
+        $plans = [
+            'Gourmet Membership' => 'Gourmet',
+            'Premium Membership' => 'Premium',
+            'Deluxe Membership' => 'Deluxe',
+        ];
+        return $plans[$productName] ?? null;
     }
 
     protected function saveSessionLineItems($sessionId, $orderId)

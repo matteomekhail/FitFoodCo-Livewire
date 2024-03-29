@@ -22,6 +22,8 @@ Route::get('/admin', function () {
     return view('admin');
 })->middleware('admin');
 
+Route::view('/meals', 'selectionMeals');
+
 Route::view('/success', 'success');
 
 

@@ -48,6 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+    public function hasMembership()
+    {
+        return $this->membership !== null;
+    }
     public function isAdmin()
     {
         return $this->is_admin == 1;

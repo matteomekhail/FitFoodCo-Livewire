@@ -100,6 +100,15 @@ class Menu extends Component
         }
     }
 
+    public $open = false;
+    public $selectedProduct = null;
+
+    public function showProduct($productId)
+    {
+        $this->selectedProduct = Product::find($productId);
+        $this->open = true;
+    }
+
     public function render()
     {
         return view('livewire.menu', [

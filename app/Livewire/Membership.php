@@ -3,9 +3,9 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
+use Auth;
 
 class Membership extends Component
 {
@@ -37,8 +37,9 @@ class Membership extends Component
                 ]
             ],
             'mode' => 'subscription',
-            'success_url' => url('/success'), // Make sure this URL conforms to your routing and application logic needs
-            'cancel_url' => Url('/'), // Assicurati di sostituire 'cancel' con il nome della tua route di cancellazione
+            'success_url' => url('/meals'),
+            'cancel_url' => Url('/'),
+            'customer_email' => Auth::user()->email,
         ]);
 
         return redirect($session->url, 303);
@@ -47,9 +48,9 @@ class Membership extends Component
     private function getPlanName($plan)
     {
         $plans = [
-            'gourmet' => 'Gourmet Membership',
-            'premium' => 'Premium Membership',
-            'deluxe' => 'Deluxe Membership',
+            'Gourmet' => 'Gourmet Membership',
+            'Premium' => 'Premium Membership',
+            'Deluxe' => 'Deluxe Membership',
         ];
 
         return $plans[$plan] ?? 'Unknown Plan';
@@ -58,11 +59,20 @@ class Membership extends Component
     private function getPlanPrice($plan)
     {
         $prices = [
-            'gourmet' => 11352,
-            'premium' => 16132,
-            'deluxe' => 20000,
+            'Gourmet' => 11352,
+            'Premium' => 16132,
+            'Deluxe' => 20000,
         ];
 
         return $prices[$plan] ?? 0;
+    }
+
+    public function subscribe($plan)
+    {
+        if (!auth()->check()) {
+            $this->dispatch('show-modal');
+        } else {
+            $this->checkout($plan);
+        }
     }
 }
