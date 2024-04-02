@@ -66,42 +66,42 @@
                         </div>
                     </div>
                 </div>
-<div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal menu-sm gap-2 px-1 lg:pl-80 text-black pt-20 flex justify-between">
-        <li class="font-medium"><a href="/">Home</a></li>
-        <li class="font-medium"><a href="/#services">Menu</a></li>
-        <li class="font-medium pt-1 relative">
-            @if (Auth::check())
-                <button wire:click="$dispatch('openUserModal')" aria-label="User account">
-                    <i class="fas fa-user"></i>
-                </button>
-            @else
-                <button wire:click="$dispatch('show-modal')" aria-label="User account">
-                    <i class="fas fa-user"></i>
-                </button>
-            @endif
-        </li>
-        <li class="font-medium pt-1 relative">
-            <button onclick="toggleSidebarEvent()" aria-label="Open shopping cart">
-                <i class="fas fa-shopping-cart"></i>
-                @if ($cartItemCount > 0)
-                    <span
-                        class="absolute right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
-                        style="top: -6px;">
-                        {{ $cartItemCount }}
-                    </span>
-                @endif
-            </button>
-        </li>
-        @if (Auth::check() && Auth::user()->hasMembership())
-            <li class="font-medium pt-1 relative">
-                <a href="/meals" aria-label="Meals">
-                    <i class="fas fa-utensils"></i>
-                </a>
-            </li>
-        @endif
-    </ul>
-</div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal menu-sm gap-2 px-1 lg:pl-80 text-black pt-20 flex justify-between">
+                        <li class="font-medium"><a href="/">Home</a></li>
+                        <li class="font-medium"><a href="/#services">Menu</a></li>
+                        <li class="font-medium pt-1 relative">
+                            @if (Auth::check())
+                                <button wire:click="$dispatch('openUserModal')" aria-label="User account">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            @else
+                                <button wire:click="$dispatch('show-modal')" aria-label="User account">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            @endif
+                        </li>
+                        <li class="font-medium pt-1 relative">
+                            <button onclick="toggleSidebarEvent()" aria-label="Open shopping cart">
+                                <i class="fas fa-shopping-cart"></i>
+                                @if ($cartItemCount > 0)
+                                    <span
+                                        class="absolute right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
+                                        style="top: -6px;">
+                                        {{ $cartItemCount }}
+                                    </span>
+                                @endif
+                            </button>
+                        </li>
+                        @if (Auth::check() && Auth::user()->hasMembership())
+                            <li class="font-medium pt-1 relative">
+                                <a href="/meals" aria-label="Meals">
+                                    <i class="fas fa-utensils"></i>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
             </nav>
 
             <!-- sm screen menu (drawer) -->

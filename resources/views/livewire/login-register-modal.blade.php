@@ -16,7 +16,7 @@
                             </svg>
                         </button>
                     </div>
-                    @if ($form != 'login')
+                    @if ($form != 'login' && $form != 'forgot_password')
                         <!-- Registration form goes here -->
                         <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit.prevent="register">
                             @csrf
@@ -88,6 +88,42 @@
                                     class="text-[#FACB01] font-bold hover:underline ">Sign in</a>
                             </div>
                         </form>
+                    @elseif ($form == 'forgot_password')
+                        <!-- Forgot password form goes here -->
+                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit.prevent="forgotPassword">
+                            @csrf
+                            <h3 class="text-xl font-bold">
+                                Reset your password
+                                <span class="font-bold text-[#FACB01]">
+                                    FitFoodCo
+                                </span>
+                            </h3>
+                            @if (session('message'))
+                                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                                    role="alert">
+                                    <strong class="font-bold">Success!</strong> <br>
+                                    <span class="block sm:inline">{{ session('message') }}</span>
+                                </div>
+                            @endif
+                            <div>
+                                <label for="email" class="text-sm font-medium text-black block mb-2">Your
+                                    email</label>
+                                <input type="email" name="email" id="email" wire:model="email"
+                                    class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
+                                    placeholder="name@provider.com" required="">
+                                @error('email')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <button type="submit"
+                                class="transition-all duration-500 ease-in-out transform hover:scale-110 w-full text-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                Send reset link
+                            </button>
+                            <div class="text-sm font-medium text-gray-500 ">
+                                Remembered your password? <a href="#" wire:click="$set('form', 'login')"
+                                    class="text-[#FACB01] font-bold hover:underline ">Sign in</a>
+                            </div>
+                        </form>
                     @else
                         <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit.prevent="login">
                             @csrf
@@ -131,7 +167,8 @@
                                             me</label>
                                     </div>
                                 </div>
-                                <a href="#" class="text-sm text-[#FACB01] font-bold hover:underline ">Lost
+                                <a href="#" class="text-sm text-[#FACB01] font-bold hover:underline "
+                                    wire:click="$set('form', 'forgot_password')">Forgot
                                     Password?</a>
                             </div>
                             @if (session()->has('error'))

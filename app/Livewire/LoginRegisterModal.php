@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Exception;
 use App\Models\Carts;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class LoginRegisterModal extends Component
 {
@@ -112,6 +113,22 @@ class LoginRegisterModal extends Component
     public function mount($shouldShowModal = false)
     {
         $this->showModal = $shouldShowModal;
+    }
+
+    public function forgotPassword()
+    {
+        $this->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        $status = Password::sendResetLink(['email' => $this->email]);
+
+        if ($status === Password::RESET_LINK_SENT) {
+            session()->flash('message', 'We have e-mailed your password reset link!');
+        } else {
+            session()->flash('error', 'There was an error sending the password reset link.');
+        }
+
     }
 
 }
