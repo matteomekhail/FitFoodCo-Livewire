@@ -37,6 +37,9 @@ class Membership extends Component
                 ]
             ],
             'mode' => 'subscription',
+            'shipping_address_collection' => [
+                'allowed_countries' => ['AU', 'NZ'],
+            ],
             'success_url' => url('/meals'),
             'cancel_url' => Url('/'),
             'customer_email' => Auth::user()->email,

@@ -8,6 +8,7 @@ use App\Models\Product;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 use Auth;
+
 class SidebarCart extends Component
 {
     public $isOpen = false;
@@ -93,9 +94,11 @@ class SidebarCart extends Component
             'shipping_address_collection' => [
                 'allowed_countries' => ['AU', 'NZ'],
             ],
-            'shipping_options' => [[
-                'shipping_rate' => 'shr_1OmZMiK8KCvHYe8JDei4iY3J',
-            ]],
+            'shipping_options' => Auth::user()->free_shipping ? [] : [
+                [
+                    'shipping_rate' => 'shr_1OmZMiK8KCvHYe8JDei4iY3J',
+                ]
+            ],
             'client_reference_id' => auth()->id(),
             'customer_email' => Auth::user()->email, // Add this line
         ]);

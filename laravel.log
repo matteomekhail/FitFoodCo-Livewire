@@ -1009,3 +1009,713 @@
 #73 /home/customer/www/fitfoodco.au/public_html/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #74 {main}
 "} 
+[2024-03-30 01:54:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:54:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:54:56] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:54:56] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:54:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:54:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:01] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:01] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:01] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:01] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:03] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:03] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:27] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:27] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:50] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:50] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:55:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:42] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:42] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:46] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:46] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:52] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:52] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:53] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:55] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:56] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:56] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:56] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:56] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:56:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:08] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:08] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:11] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:11] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:27] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:27] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:28] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:57:28] production.ERROR: Validation error: The email has already been taken.  
+[2024-03-30 01:58:16] production.INFO: Session cart: Array
+(
+    [6] => 2
+    [10] => 1
+    [11] => 1
+)
+  
+[2024-03-30 01:58:16] production.INFO: Session after clearing cart: Array
+(
+    [_token] => W8UZP8RQvMKsZVNDxoHYxrO618yS0JTImZOZDHcv
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 41
+)
+  
+[2024-03-30 09:19:02] production.INFO: Session cart: Array
+(
+)
+  
+[2024-03-30 09:19:02] production.INFO: Session after clearing cart: Array
+(
+    [_token] => L0blbLiLo3kyuAM49DvSn3gHntb8f84U09LrVyuw
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 1
+)
+  
+[2024-03-30 23:16:51] production.INFO: Session cart: Array
+(
+)
+  
+[2024-03-30 23:16:51] production.INFO: Session after clearing cart: Array
+(
+    [_token] => HSft9F9FxxZoXa5lXOtgIu1phYEWbh4wBFaJ3bk0
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 1
+)
+  
+[2024-03-30 23:40:52] production.INFO: Session cart: Array
+(
+    [3] => 4
+)
+  
+[2024-03-30 23:40:52] production.INFO: Session after clearing cart: Array
+(
+    [_token] => gorKWdqLc8qy21K7h8fgYRCF0H4Mby3Qk7rhvXeq
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 1
+)
+  
+[2024-03-31 03:26:17] production.INFO: Session cart: Array
+(
+)
+  
+[2024-03-31 03:26:17] production.INFO: Session after clearing cart: Array
+(
+    [_token] => 7L4orQHx1lwJ34lEl59jrYoUD8JsSwtLHCc0Bu9w
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 1
+)
+  
+[2024-03-31 04:18:55] production.INFO: Session cart: Array
+(
+)
+  
+[2024-03-31 04:18:55] production.INFO: Session after clearing cart: Array
+(
+    [_token] => y3Ded6FTudcuxGBzwnN5l5jjZctOYDzKnxzYWksQ
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 3
+)
+  
+[2024-03-31 05:30:36] production.INFO: Session cart: Array
+(
+)
+  
+[2024-03-31 05:30:36] production.INFO: Session after clearing cart: Array
+(
+    [_token] => z8ysdIZHxkljSBTYne5d9miHvrwR3yGIiZJUm5y0
+    [_previous] => Array
+        (
+            [url] => https://www.fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 3
+)
+  
+[2024-03-31 10:06:25] production.INFO: Session cart: Array
+(
+    [1] => 1
+    [5] => 1
+    [8] => 1
+    [9] => 1
+    [11] => 1
+)
+  
+[2024-03-31 10:06:25] production.INFO: Session after clearing cart: Array
+(
+    [_token] => yn570ez34s6E99yaHwZ1I0lBMXBpwcTMh9Of5igC
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 60
+)
+  
+[2024-03-31 10:06:25] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-01 16:07:47] production.INFO: Session cart: Array
+(
+    [9] => 1
+    [2] => 1
+    [3] => 1
+    [4] => 1
+    [12] => 1
+)
+  
+[2024-04-01 16:07:47] production.INFO: Session after clearing cart: Array
+(
+    [_token] => 1WUESj7BkvYOCPFe8oNP80h0WvHnjLe3hfUq29ew
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 33
+)
+  
+[2024-04-02 00:42:48] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:42:48] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:42:50] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:42:50] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:42:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:42:58] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:23] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:23] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:28] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:28] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:34] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:34] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:41] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:41] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:59] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:44:59] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:08] production.ERROR: Validation error: The first name field is required. (and 3 more errors)  
+[2024-04-02 00:45:17] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:17] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:18] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:18] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:19] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:19] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:20] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:21] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:56] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:45:56] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:26] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:26] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:28] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:28] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:29] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:29] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:29] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:29] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:30] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:30] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:30] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:56:30] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:07] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:07] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:09] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:09] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:10] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:10] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:10] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:10] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:11] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:11] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:11] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:11] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:17] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:17] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:24] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:24] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:27] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 00:57:27] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:01] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:01] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:03] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:03] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:04] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:04] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:04] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:04] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:12] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 01:02:13] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 03:53:01] production.INFO: Session cart: Array
+(
+)
+  
+[2024-04-02 03:53:01] production.INFO: Session after clearing cart: Array
+(
+    [_token] => 4jb2pXLO3FZqn0EU0MOK86wSfjTXiX6GpYOAgIIw
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au/?fbclid=PAAaaIl6aJlAsX1_iNIa4avnMxlAGbFTgHAc1vEwtXvTt6o-B_v_ipNeem7Ns_aem_Ae3CX-EUQwqgPasfCo8pB-ty1iveNEmJSGsw9J-D-RvZWpvNI_kN6ME-WS4HRNsUsfY
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 13
+)
+  
+[2024-04-02 03:55:55] production.INFO: Session cart: Array
+(
+)
+  
+[2024-04-02 03:55:55] production.INFO: Session after clearing cart: Array
+(
+    [_token] => 26v53i226sSpqTBMo8G245iKd5DnzqfPeZt8IGIu
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 1
+)
+  
+[2024-04-02 10:09:15] production.INFO: Session cart: Array
+(
+)
+  
+[2024-04-02 10:09:15] production.INFO: Session after clearing cart: Array
+(
+    [_token] => Gy1Bt7vi3MWoLq5wCUUEFV1Ody9DRekwygikzAY8
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 1
+)
+  
+[2024-04-02 11:29:24] production.INFO: Session cart: Array
+(
+)
+  
+[2024-04-02 11:29:24] production.INFO: Session after clearing cart: Array
+(
+    [_token] => YjK0jFUVmPUMSJHCVsSLNS9FvY7EyyoP6HBhazYp
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 61
+)
+  
+[2024-04-02 11:29:24] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 19:34:12] production.INFO: Session cart: Array
+(
+)
+  
+[2024-04-02 19:34:12] production.INFO: Session after clearing cart: Array
+(
+    [_token] => aLGS00thc5Z8OvV6e3B1FjfcZzjn0ErrXUGqWfu6
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 9
+)
+  
+[2024-04-02 23:04:48] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:04:48] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:04:49] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:04:49] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:04:50] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:04:50] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:04:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:04:54] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:37] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:37] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:42] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:42] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:43] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:43] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:43] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:43] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:44] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:44] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:45] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:45] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:45] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:45] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:45] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:45] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:45] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:45] production.ERROR: Validation error: The email has already been taken.  
+[2024-04-02 23:05:47] production.INFO: Session cart: Array
+(
+)
+  
+[2024-04-02 23:05:47] production.INFO: Session after clearing cart: Array
+(
+    [_token] => 8IkHQnSzxm1oNbvAZeDXIvByEe08Fj43AGnhCdIR
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au/?fbclid=PAAabW7yVKEdtK8dP6KGmb-Hh2MM2A3Wr0lEvI8RFJcAA2x_N2zEO8oPoe64c_aem_Ablu7G5vQiihNSe-jRsYIYylRhqJZW6Pt69f7rXlmhfGqPLE1tR0aSVi-bQHQeCbJrU
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 30
+)
+  
+[2024-04-02 23:06:47] production.INFO: Session cart: Array
+(
+)
+  
+[2024-04-02 23:06:47] production.INFO: Session after clearing cart: Array
+(
+    [_token] => QESQ63J0QFzIluNDWNBZS5p920abUkOOehfkDujA
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 30
+)
+  
+[2024-04-03 01:07:37] production.INFO: Session cart: Array
+(
+)
+  
+[2024-04-03 01:07:37] production.INFO: Session after clearing cart: Array
+(
+    [_token] => wwkWdKTbo2BswVTATfUisvKhxFBbcNXJwnqRWJlp
+    [_previous] => Array
+        (
+            [url] => https://fitfoodco.au
+        )
+
+    [_flash] => Array
+        (
+            [old] => Array
+                (
+                )
+
+            [new] => Array
+                (
+                )
+
+        )
+
+    [login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d] => 1
+)
+  

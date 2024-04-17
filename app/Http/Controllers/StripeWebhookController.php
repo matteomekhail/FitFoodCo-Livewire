@@ -26,7 +26,7 @@ class StripeWebhookController extends Controller
 
         switch ($event) {
             case 'checkout.session.completed':
-                if (isset ($data['mode']) && $data['mode'] === 'subscription') {
+                if (isset($data['mode']) && $data['mode'] === 'subscription') {
                     $this->handleSubscriptionSessionCompleted($data);
                 } else {
                     $this->handleCheckoutSessionCompleted($data);
@@ -65,7 +65,7 @@ class StripeWebhookController extends Controller
         $this->saveSessionLineItems($session['id'], $order->id);
 
         // Salva l'indirizzo
-        if (isset ($session['shipping_details']['address'])) {
+        if (isset($session['shipping_details']['address'])) {
             $address = new Address;
             $address->order_id = $order->id;
             $address->street = $session['shipping_details']['address']['line1'];
@@ -115,6 +115,13 @@ class StripeWebhookController extends Controller
         if (!$membershipType) {
             \Log::warning('Membership non identificabile per il prodotto: ' . $productName);
             return response()->json(['error' => 'Membership non identificabile'], 400);
+        }
+
+        if (isset($session['shipping']['address'])) {
+            $user->address = $session['shipping']['address']['line1'] . ', ' .
+                $session['shipping']['address']['city'] . ', ' .
+                $session['shipping']['address']['state'] . ', ' .
+                $session['shipping']['address']['postal_code'];
         }
 
         $user->membership = $membershipType;

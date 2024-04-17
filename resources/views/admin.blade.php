@@ -21,7 +21,7 @@
     @auth
         <!-- The rest of your page for authenticated users -->
         <!-- Include your admin components here -->
-        @livewire('navbar')
+        @livewire('navbarAdmin')
         @livewire('orders')
     @endauth
 

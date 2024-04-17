@@ -18,13 +18,15 @@ Route::view('/', 'welcome');
 
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/admin/{filter?}', function ($filter = null) {
+    return view('admin', ['filter' => $filter]);
 })->middleware('admin');
 
 Route::view('/meals', 'selectionMeals');
 
 Route::view('/success', 'success');
+
+
 
 
 require __DIR__ . '/auth.php';

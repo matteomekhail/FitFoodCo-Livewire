@@ -9,20 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+   public function up()
     {
         Schema::table('order_products', function (Blueprint $table) {
-            //
+            $table->boolean('is_cooked')->default(false);
+            $table->boolean('is_delivered')->default(false);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::table('order_products', function (Blueprint $table) {
-            //
+            $table->dropColumn('is_cooked');
+            $table->dropColumn('is_delivered');
         });
     }
 };

@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Order;
-use Illuminate\Support\Facades\DB;
+use App\Models\OrderProduct;
 
 class Orders extends Component
 {
@@ -12,7 +12,31 @@ class Orders extends Component
 
     public function mount()
     {
-        $this->orders = Order::with(['user', 'orderProducts.product', 'address'])->orderBy('created_at', 'desc')->get();
+        $this->loadOrders();
+    }
+
+    public function setCooked($orderProductId)
+    {
+        $orderProduct = OrderProduct::find($orderProductId);
+        $orderProduct->is_cooked = !$orderProduct->is_cooked;
+        $orderProduct->save();
+
+        $this->loadOrders(); // Ricarica gli ordini dopo la modifica
+    }
+
+    public function setDelivered($orderProductId)
+    {
+        $orderProduct = OrderProduct::find($orderProductId);
+        $orderProduct->is_delivered = !$orderProduct->is_delivered;
+        $orderProduct->save();
+
+        $this->loadOrders(); // Ricarica gli ordini dopo la modifica
+    }
+
+    private function loadOrders()
+    {
+        $this->orders = Order::with(['user', 'orderProducts.product', 'address'])
+                             ->orderBy('created_at', 'desc')->get();
     }
 
     public function render()
@@ -21,5 +45,5 @@ class Orders extends Component
             'orders' => $this->orders,
         ]);
     }
-
 }
+
