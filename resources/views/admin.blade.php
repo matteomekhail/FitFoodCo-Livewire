@@ -26,6 +26,37 @@
     @endauth
 
     @livewireScripts
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const printButton = document.querySelector('.print-btn');
+
+        printButton.addEventListener('click', function() {
+            let printContents = document.querySelectorAll('.uncooked-order');
+            let originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = '';
+            printContents.forEach(function(order) {
+                let clonedOrder = order.cloneNode(true);
+
+                let images = clonedOrder.querySelectorAll('img');
+                images.forEach(function(image) {
+                    image.parentNode.removeChild(image);
+                });
+
+                let buttons = clonedOrder.querySelectorAll('button');
+                buttons.forEach(function(button) {
+                    button.parentNode.removeChild(button);
+                });
+
+                document.body.appendChild(clonedOrder);
+            });
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        });
+    });
+</script>
 </body>
 
 </html>

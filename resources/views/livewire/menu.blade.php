@@ -40,7 +40,18 @@
                         <p class="capitalize my-1">
                             <strong>{{ $product->name }}</strong>
                         </p>
-                        <span class="font-bold focus:ring-[#FAD961]">$ {{ $product->price }}</span>
+                        @php
+                            $totalQuantity = collect($productQuantities)->sum();
+                        @endphp
+                        <span class="font-bold focus:ring-[#FAD961]">
+                            @if (auth()->user() && auth()->user()->wholesale)
+                                $ 9
+                            @elseif ($totalQuantity > 20)
+                                <del class="text-red-500">$ {{ $product->price }}</del> $ 10
+                            @else
+                                $ {{ $product->price }}
+                            @endif
+                        </span>
                         <div class="mt-3">
                             <p><strong>Calories:</strong> {{ $product->calories }} CAL</p>
                             <p><strong>Protein:</strong> {{ $product->protein }} P</p>

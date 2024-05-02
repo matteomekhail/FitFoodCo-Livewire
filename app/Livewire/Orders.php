@@ -5,6 +5,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\MealSelection;
+
 
 class Orders extends Component
 {
@@ -36,7 +38,7 @@ class Orders extends Component
     private function loadOrders()
     {
         $this->orders = Order::with(['user', 'orderProducts.product', 'address'])
-                             ->orderBy('created_at', 'desc')->get();
+            ->orderBy('created_at', 'desc')->get();
     }
 
     public function render()

@@ -5,11 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Carts as Cart;
-use Session;
-use Image;
 use Illuminate\Support\Facades\Log;
-use Livewire\WithPagination;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 
@@ -17,8 +13,6 @@ class Menu extends Component
 {
     public $productQuantities = [];
     protected $listeners = ['updateQuantity' => 'updateQuantity'];
-
-
     public function mount()
     {
         if (auth()->check()) {
@@ -75,7 +69,6 @@ class Menu extends Component
             }
         } catch (\Exception $e) {
             Log::error("Errore nell'aggiornamento del carrello utente autenticato: " . $e->getMessage());
-            // Gestire l'errore, ad es. inviando un messaggio all'utente
             session()->flash('error', 'Non è stato possibile aggiornare il carrello.');
         }
     }
@@ -111,10 +104,13 @@ class Menu extends Component
 
     public function render()
     {
+        // Modifica qui per includere i prodotti ordinati per best seller
+        $products = Product::withCount(['orderProducts as total_sold' => function ($query) {
+            $query->select(DB::raw("SUM(quantity)"));
+        }])->orderBy('total_sold', 'desc')->get();
+
         return view('livewire.menu', [
-            'products' => Cache::remember('products', 120, function () {
-                return Product::all();
-            }),
+            'products' => $products,
         ]);
     }
 

@@ -24,6 +24,11 @@ class Product extends Model
         'image'
     ];
 
+    public function orderProducts()
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
+
     /**
      * The attributes that should be cast.
      *

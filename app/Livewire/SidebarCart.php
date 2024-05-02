@@ -71,13 +71,16 @@ class SidebarCart extends Component
         foreach ($cartItems as $item) {
             $product = $item->product;
 
+            // If total items are more than 20, set price to 10$
+            $price = auth()->user()->wholesale ? 9 : ($totalItems > 20 ? 10 : $product->price);
+
             $line_items[] = [
                 'price_data' => [
                     'currency' => 'aud',
                     'product_data' => [
                         'name' => $product->name,
                     ],
-                    'unit_amount' => $product->price * 100,
+                    'unit_amount' => $price * 100,
                 ],
                 'quantity' => $item->quantity,
             ];
@@ -90,7 +93,7 @@ class SidebarCart extends Component
             'mode' => 'payment',
             'success_url' => url('/success'), // Make sure this URL conforms to your routing and application logic needs
             'cancel_url' => url('/'),
-            'allow_promotion_codes' => true,
+            'allow_promotion_codes' => auth()->user()->wholesale ? false : true,
             'shipping_address_collection' => [
                 'allowed_countries' => ['AU', 'NZ'],
             ],

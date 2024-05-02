@@ -33,7 +33,21 @@
                                         {{ $item->product->name }}</div>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-lg text-black">{{ $item->product->price }}</span>
+                                    @php
+                                        $totalQuantity = collect($cartItems)->reduce(function ($carry, $item) {
+                                            return $carry + $item->quantity;
+                                        }, 0);
+                                    @endphp
+
+                                    <span class="text-lg text-black">
+                                        @if (auth()->user() && auth()->user()->wholesale)
+                                            9
+                                        @elseif ($totalQuantity > 20)
+                                            <del class="text-red-500">{{ $item->product->price }}</del> 10
+                                        @else
+                                            {{ $item->product->price }}
+                                        @endif
+                                    </span>
                                     <div class="flex items-center">
                                         <button
                                             wire:click.stop="dispatch('updateQuantity', [{{ $item->product->id }}, -1])"
@@ -55,33 +69,47 @@
                 You have no items in your cart
             </div>
         @endif
+        <div class="bg-[#FACB01] text-black px-4 py-2 rounded-lg my-4 text-center">
+            <span class="font-bold">Special Bulk Pricing:</span> Order over 20 MEALS and pay only <span
+                class="font-bold">$10/MEAL!</span>
+        </div>
         <div class="sticky bottom-0 z-50 bg-transparent p-4 border-t border-black">
             @if (count($cartItems) > 0)
                 <div class="flex justify-between mb-4">
                     <span class="text-lg text-black font-bold">Total</span>
-                    <div>
-                        <span
-                            class="text-lg text-black font-bold">${{ number_format(
+                    <span class="text-lg text-black font-bold">
+                        @if (auth()->user() && auth()->user()->wholesale)
+                            ${{ number_format(9 * $totalQuantity, 2) }}
+                        @elseif ($totalQuantity > 20)
+                            ${{ number_format(10 * $totalQuantity, 2) }}
+                        @else
+                            ${{ number_format(
                                 collect($cartItems)->reduce(function ($carry, $item) {
                                     return $carry + ($item->product ? $item->product->price * $item->quantity : 0);
                                 }, 0),
                                 2,
-                            ) }}</span>
+                            ) }}
+                        @endif
+                    </span>
+                    @if (auth()->user() && auth()->user()->free_shipping)
+                        <div class="text-sm text-gray-500">Free Shipping</div>
+                    @else
                         <div class="text-sm text-gray-500">+ $9.99 shipping</div>
-                    </div>
+                    @endif
                 </div>
-                <button wire:click="checkout"
-                    class="bg-white text-black w-full px-4 py-2 rounded-lg text-lg flex justify-center items-center transition-colors duration-200 ease-in-out hover:bg-black hover:text-[#FACB01]">
-                    <i class="fas fa-shopping-cart mr-2"></i>
-                    Checkout
-                </button>
-            @endif
         </div>
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
+        <button wire:click="checkout"
+            class="bg-white text-black w-full px-4 py-2 rounded-lg text-lg flex justify-center items-center transition-colors duration-200 ease-in-out hover:bg-black hover:text-[#FACB01]">
+            <i class="fas fa-shopping-cart mr-2"></i>
+            Checkout
+        </button>
         @endif
     </div>
-    <!-- Aggiungi questa div per chiudere la sidebar quando si fa clic sullo sfondo -->
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+</div>
+<!-- Aggiungi questa div per chiudere la sidebar quando si fa clic sullo sfondo -->
 </div>
