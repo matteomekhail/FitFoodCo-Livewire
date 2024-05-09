@@ -24,6 +24,10 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        'street',
+        'city',
+        'state',
+        'zip'
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -51,6 +55,11 @@ class User extends Authenticatable
     public function hasMembership()
     {
         return $this->membership !== null;
+    }
+
+    public function mealSelections()
+    {
+        return $this->hasMany(MealSelection::class);
     }
     public function isAdmin()
     {

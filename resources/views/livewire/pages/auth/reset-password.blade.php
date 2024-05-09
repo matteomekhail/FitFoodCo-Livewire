@@ -68,7 +68,7 @@ new #[Layout('layouts.guest')] class extends Component {
 }; ?>
 
 <div class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8">
-    <form wire:submit.prevent="resetPassword" class="p-6">
+    <form wire:submit="resetPassword" class="p-6">
         @csrf
         <h3 class="text-xl font-bold">
             Reset Password for
@@ -80,7 +80,7 @@ new #[Layout('layouts.guest')] class extends Component {
         <!-- Email Address -->
         <div>
             <label for="email" class="text-sm font-medium text-black block mb-2">Your Email</label>
-            <input type="email" name="email" id="email" wire:model="email" class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 mb-2 " placeholder="name@provider.com" required autofocus autocomplete="username" />
+            <input type="email" name="email" id="email" wire:model.live="email" class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 mb-2 " placeholder="name@provider.com" required autofocus autocomplete="username" />
             @error('email')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
@@ -89,7 +89,7 @@ new #[Layout('layouts.guest')] class extends Component {
         <!-- Password -->
         <div>
             <label for="password" class="text-sm font-medium text-black block mb-2">Your Password</label>
-            <input type="password" name="password" id="password" wire:model="password" class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 mb-2 " placeholder="••••••••" required autocomplete="new-password" />
+            <input type="password" name="password" id="password" wire:model.live="password" class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 mb-2 " placeholder="••••••••" required autocomplete="new-password" />
             @error('password')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror
@@ -98,7 +98,7 @@ new #[Layout('layouts.guest')] class extends Component {
         <!-- Confirm Password -->
         <div>
             <label for="password_confirmation" class="text-sm font-medium text-black block mb-2">Confirm Your Password</label>
-            <input type="password" name="password_confirmation" id="password_confirmation" wire:model="password_confirmation" class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 mb-4 " placeholder="••••••••" required autocomplete="new-password" />
+            <input type="password" name="password_confirmation" id="password_confirmation" wire:model.live="password_confirmation" class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 mb-4 " placeholder="••••••••" required autocomplete="new-password" />
             @error('password_confirmation')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror

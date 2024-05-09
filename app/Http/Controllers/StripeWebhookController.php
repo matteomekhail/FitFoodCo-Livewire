@@ -92,45 +92,29 @@ class StripeWebhookController extends Controller
             return response()->json(['error' => 'ID sottoscrizione mancante'], 400);
         }
 
-        try {
-            $subscription = $this->stripe->subscriptions->retrieve($subscriptionId);
-        } catch (\Exception $e) {
-            \Log::error('Errore nel recupero della sottoscrizione: ' . $e->getMessage());
-            return response()->json(['error' => 'Errore nel recupero della sottoscrizione'], 500);
-        }
+        $subscription = $this->stripe->subscriptions->retrieve($subscriptionId);
 
         $productId = $subscription->items->data[0]->plan->product;
+        $product = $this->stripe->products->retrieve($productId);
 
-        try {
-            $product = $this->stripe->products->retrieve($productId);
-        } catch (\Exception $e) {
-            \Log::error('Errore nel recupero del prodotto: ' . $e->getMessage());
-            return response()->json(['error' => 'Errore nel recupero del prodotto'], 500);
+        $user->stripe_id = $subscription->customer;
+        $user->membership = $this->mapProductNameToMembershipType($product->name);
+
+        if (isset($session['shipping_details']['address'])) {
+            $address = $session['shipping_details']['address'];
+            $user->street = $address['line1'];
+            $user->city = $address['city'];
+            $user->state = $address['state'];
+            $user->zip = $address['postal_code'];
+            $user->save();
         }
-
-        $productName = $product->name; // Ora hai il nome del prodotto
-
-        $membershipType = $this->mapProductNameToMembershipType($productName);
-
-        if (!$membershipType) {
-            \Log::warning('Membership non identificabile per il prodotto: ' . $productName);
-            return response()->json(['error' => 'Membership non identificabile'], 400);
-        }
-
-        if (isset($session['shipping']['address'])) {
-            $user->address = $session['shipping']['address']['line1'] . ', ' .
-                $session['shipping']['address']['city'] . ', ' .
-                $session['shipping']['address']['state'] . ', ' .
-                $session['shipping']['address']['postal_code'];
-        }
-
-        $user->membership = $membershipType;
-        $user->save();
 
         $this->clearMealSelection($user->id);
 
         return response()->json(['success' => 'Membership aggiornata correttamente']);
     }
+
+
 
     private function clearMealSelection($userId)
     {

@@ -1,10 +1,9 @@
-<footer class="relative after:shadow-md after:absolute"
-    style="background-image: linear-gradient(to bottom, #FACB01 0%, #FAD961 100%);">
+<footer class="relative after:shadow-md after:absolute bg-black">
     <div class="container mx-auto w-full max-w-screen-xl px-4 pt-10">
         <div class="flex flex-wrap justify-between mb-8">
 
             <div>
-                <h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 focus:ring-[#FAD961]">FitFoodCo</h2>
+                <h2 class="mb-6 text-sm font-semibold uppercase text-white focus:ring-[#FAD961]">FitFoodCo</h2>
                 <ul class="font-medium text-gray-500 focus:ring-[#FAD961]">
                     <li class="mb-4">
                         <a href="#" class="hover:underline focus:ring-[#FAD961]">About</a>
@@ -12,7 +11,7 @@
                 </ul>
             </div>
             <div>
-                <h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 focus:ring-[#FAD961]">Help center</h2>
+                <h2 class="mb-6 text-sm font-semibold uppercase text-white focus:ring-[#FAD961]">Help center</h2>
                 <ul class="font-medium text-gray-500 focus:ring-[#FAD961]">
                     <li class="mb-4">
                         <a href="#" class="hover:underline focus:ring-[#FAD961]">Instagram</a>
@@ -23,7 +22,7 @@
                 </ul>
             </div>
             <div>
-                <h2 class="mb-6 text-sm font-semibold uppercase text-gray-900 focus:ring-[#FAD961]">Legal</h2>
+                <h2 class="mb-6 text-sm font-semibold uppercase text-white focus:ring-[#FAD961]">Legal</h2>
                 <ul class="font-medium text-gray-500 focus:ring-[#FAD961]">
                     <li class="mb-4">
                         <a href="#" class="hover:underline focus:ring-[#FAD961]">Privacy Policy</a>
@@ -42,19 +41,19 @@
                     href="https://google.com/"> FitFoodCo</a>. All Rights Reserved. </span>
             <!--
     <div class="mt-4 flex space-x-5 sm:justify-center md:mt-0">
-      <a href="#" class="text-gray-400 hover:text-gray-900">
+      <a href="#" class="text-gray-400 hover:text-white">
         <span class="sr-only">Facebook page</span>
       </a>
-      <a href="#" class="text-gray-400 hover:text-gray-900">
+      <a href="#" class="text-gray-400 hover:text-white">
         <span class="sr-only">Discord community</span>
       </a>
-      <a href="#" class="text-gray-400 hover:text-gray-900">
+      <a href="#" class="text-gray-400 hover:text-white">
         <span class="sr-only">Twitter page</span>
       </a>
-      <a href="#" class="text-gray-400 hover:text-gray-900">
+      <a href="#" class="text-gray-400 hover:text-white">
         <span class="sr-only">GitHub account</span>
       </a>
-      <a href="#" class="text-gray-400 hover:text-gray-900">
+      <a href="#" class="text-gray-400 hover:text-white">
         <span class="sr-only">Dribbble account</span>
       </a>
     </div>

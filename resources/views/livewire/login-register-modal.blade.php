@@ -18,7 +18,7 @@
                     </div>
                     @if ($form != 'login' && $form != 'forgot_password')
                         <!-- Registration form goes here -->
-                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit.prevent="register">
+                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit="register">
                             @csrf
                             <h3 class="text-xl font-bold">
                                 Register to
@@ -29,7 +29,7 @@
                             <div>
                                 <label for="first_name" class="text-sm font-medium text-black block mb-2">Your First
                                     Name</label>
-                                <input type="text" name="first_name" id="first_name" wire:model="first_name"
+                                <input type="text" name="first_name" id="first_name" wire:model.live="first_name"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     placeholder="John" required="">
                                 @error('first_name')
@@ -39,7 +39,7 @@
                             <div>
                                 <label for="last_name" class="text-sm font-medium text-black block mb-2">Your Last
                                     Name</label>
-                                <input type="text" name="last_name" id="last_name" wire:model="last_name"
+                                <input type="text" name="last_name" id="last_name" wire:model.live="last_name"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     placeholder="Doe" required="">
                                 @error('last_name')
@@ -49,7 +49,7 @@
                             <div>
                                 <label for="email" class="text-sm font-medium text-black block mb-2">Your
                                     email</label>
-                                <input type="email" name="email" id="email" wire:model="email"
+                                <input type="email" name="email" id="email" wire:model.live="email"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     placeholder="name@provider.com" required="">
                                 @error('email')
@@ -59,7 +59,7 @@
                             <div>
                                 <label for="password" class="text-sm font-medium text-black block mb-2 ">Your
                                     password</label>
-                                <input type="password" name="password" id="password" wire:model="password"
+                                <input type="password" name="password" id="password" wire:model.live="password"
                                     placeholder="••••••••"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     required="">
@@ -71,7 +71,7 @@
                                 <label for="password_confirmation"
                                     class="text-sm font-medium text-black block mb-2 ">Confirm your password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation"
-                                    wire:model="password_confirmation" placeholder="••••••••"
+                                    wire:model.live="password_confirmation" placeholder="••••••••"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     required="">
                                 @error('password_confirmation')
@@ -90,7 +90,7 @@
                         </form>
                     @elseif ($form == 'forgot_password')
                         <!-- Forgot password form goes here -->
-                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit.prevent="forgotPassword">
+                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit="forgotPassword">
                             @csrf
                             <h3 class="text-xl font-bold">
                                 Reset your password
@@ -108,7 +108,7 @@
                             <div>
                                 <label for="email" class="text-sm font-medium text-black block mb-2">Your
                                     email</label>
-                                <input type="email" name="email" id="email" wire:model="email"
+                                <input type="email" name="email" id="email" wire:model.live="email"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     placeholder="name@provider.com" required="">
                                 @error('email')
@@ -125,7 +125,7 @@
                             </div>
                         </form>
                     @else
-                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit.prevent="login">
+                        <form class="space-y-6 px-6 lg:px-8 pb-4 sm:pb-6 xl:pb-8" wire:submit="login">
                             @csrf
                             <h3 class="text-xl font-bold">
                                 Sign in to
@@ -136,7 +136,7 @@
                             <div>
                                 <label for="email" class="text-sm font-medium text-black block mb-2">Your
                                     email</label>
-                                <input type="email" name="email" id="email" wire:model="email"
+                                <input type="email" name="email" id="email" wire:model.live="email"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     placeholder="name@provider.com" required="">
                                 @error('email')
@@ -147,7 +147,7 @@
                                 <label for="password" class="text-sm font-medium text-black block mb-2 ">Your
                                     password</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••"
-                                    wire:model="password"
+                                    wire:model.live="password"
                                     class="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 "
                                     required="">
                                 @error('password')
@@ -159,7 +159,7 @@
                                 <div class="flex items-start">
                                     <div class="flex items-center h-5">
                                         <input id="remember" aria-describedby="remember" type="checkbox"
-                                            wire:model="remember"
+                                            wire:model.live="remember"
                                             class="bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-yellow-300 h-4 w-4 rounded ">
                                     </div>
                                     <div class="text-sm ml-3">

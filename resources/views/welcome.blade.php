@@ -23,6 +23,7 @@
     @livewire('hero')
     @livewire('membership')
     @livewire('menu')
+    @include('components.faq')
     @include('components.footer')
     @livewire('sidebar-cart')
     @livewire('LoginRegisterModal')
