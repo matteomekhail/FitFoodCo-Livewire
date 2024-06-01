@@ -40,7 +40,9 @@
                                     @endphp
 
                                     <span class="text-lg text-black">
-                                        @if (auth()->user() && auth()->user()->wholesale)
+                                        @if (auth()->user() && auth()->user()->{"10Dollars"})
+                                            10
+                                        @elseif (auth()->user() && auth()->user()->wholesale)
                                             9
                                         @elseif ($totalQuantity > 20)
                                             <del class="text-red-500">{{ $item->product->price }}</del> 10
@@ -78,7 +80,9 @@
                 <div class="flex justify-between mb-4">
                     <span class="text-lg text-black font-bold">Total</span>
                     <span class="text-lg text-black font-bold">
-                        @if (auth()->user() && auth()->user()->wholesale)
+                        @if (auth()->user() && auth()->user()->{"10Dollars"})
+                            ${{ number_format(10 * $totalQuantity, 2) }}
+                        @elseif (auth()->user() && auth()->user()->wholesale)
                             ${{ number_format(9 * $totalQuantity, 2) }}
                         @elseif ($totalQuantity > 20)
                             ${{ number_format(10 * $totalQuantity, 2) }}

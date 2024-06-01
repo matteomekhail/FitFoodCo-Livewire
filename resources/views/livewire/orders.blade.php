@@ -79,9 +79,19 @@
             @endphp
             @if ($displayOrder)
                 <div class="card mb-4 shadow-sm {{ $uncookedOrder ? 'uncooked-order' : '' }}">
-                    <div class="card-header text-2xl py-3 text-black"
+                    <div class="card-header text-2xl py-3 text-black flex flex-col items-center justify-center"
                         style="background-image: linear-gradient(to bottom, #FACB01 0%, #FAD961 100%);">
-                        <h4 class="my-0 fw-normal text-center">Order #{{ $order->id }}</h4>
+                        <h4 class="my-0 fw-normal">Order #{{ $order->id }}</h4>
+                        <div class="flex justify-center mt-2">
+                            <button class="btn btn-sm btn-outline-secondary mx-1"
+                                wire:click="setAllCooked({{ $order->id }})">Everything Cooked</button>
+                            <button class="btn btn-sm btn-outline-secondary mx-1"
+                                wire:click="setAllUncooked({{ $order->id }})">Everything Uncooked</button>
+                            <button class="btn btn-sm btn-outline-secondary mx-1"
+                                wire:click="setAllDelivered({{ $order->id }})">Everything Delivered</button>
+                            <button class="btn btn-sm btn-outline-secondary mx-1"
+                                wire:click="setAllUndelivered({{ $order->id }})">Everything Undelivered</button>
+                        </div>
                     </div>
                     <div class="card-body">
                         @if ($order->user)
@@ -134,53 +144,53 @@
                 </div>
             @endif
         @endforeach
-        @if (request()->is('admin/membership'))
-            @php
-                $usersMeals = $mealSelections->groupBy('user_id');
-            @endphp
+@if (request()->is('admin/membership'))
+    @php
+        $usersMeals = $mealSelections->groupBy('user_id');
+    @endphp
 
-            @foreach ($usersMeals as $userId => $userMeals)
-                @php
-                    $user = $userMeals->first()->user;
-                @endphp
+    @foreach ($usersMeals as $userId => $userMeals)
+        @php
+            $user = $userMeals->first()->user;
+        @endphp
 
-                @if ($user)
-                    <div class="card mb-4 shadow-lg rounded-lg overflow-hidden">
-                        <div class="card-header bg-gradient-to-r bg-black text-2xl py-3 text-white">
-                            <h4 class="my-0 font-bold text-center">{{ $user->first_name }} {{ $user->last_name }}
-                                Membership Details</h4>
-                        </div>
-                        <div class="card-body bg-white p-4">
-                            <h5 class="card-title text-lg"><strong>Membership Level:</strong>
-                                {{ $user->membership ?? 'Not Available' }}</h5>
-                            <p class="card-text">
-                                <strong>Address:</strong>
-                                @if ($user)
-                                    {{ $user->street }}, {{ $user->city }},
-                                    {{ $user->state }}, {{ $user->zip }}
-                                @else
-                                    Not available
-                                @endif
-                            </p>
-                            <p class="card-text"><strong>Selected Meals:</strong></p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                                @foreach ($userMeals as $mealSelection)
-                                    <div class="bg-gray-100 rounded overflow-hidden shadow-md">
-                                        <img src="{{ asset('' . $mealSelection->product->image) }}"
-                                            class="w-full h-48 object-cover" alt="{{ $mealSelection->product->name }}">
-                                        <div class="p-3">
-                                            <h5 class="font-bold">{{ $mealSelection->product->name }}</h5>
-                                            <p class="text-sm">Quantity: {{ $mealSelection->quantity }}</p>
-                                        </div>
-                                    </div>
-                                @endforeach
+        @if ($user)
+            <div class="card mb-4 shadow-lg rounded-lg overflow-hidden">
+                <div class="card-header bg-gradient-to-r {{ $userMeals->first()->status == 'past' ? 'bg-red-500' : 'bg-black' }} text-2xl py-3 text-white">
+                    <h4 class="my-0 font-bold text-center">{{ $user->first_name }} {{ $user->last_name }}
+                        {{ $userMeals->first()->status == 'past' ? '(Past)' : '' }} Membership Details</h4>
+                </div>
+                <div class="card-body bg-white p-4">
+                    <h5 class="card-title text-lg"><strong>Membership Level:</strong>
+                        {{ $user->membership ?? 'Not Available' }}</h5>
+                    <p class="card-text">
+                        <strong>Address:</strong>
+                        @if ($user)
+                            {{ $user->street }}, {{ $user->city }},
+                            {{ $user->state }}, {{ $user->zip }}
+                        @else
+                            Not available
+                        @endif
+                    </p>
+                    <p class="card-text"><strong>Selected Meals:</strong></p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        @foreach ($userMeals as $mealSelection)
+                            <div class="bg-gray-100 rounded overflow-hidden shadow-md">
+                                <img src="{{ asset('' . $mealSelection->product->image) }}"
+                                    class="w-full h-48 object-cover" alt="{{ $mealSelection->product->name }}">
+                                <div class="p-3">
+                                    <h5 class="font-bold">{{ $mealSelection->product->name }}</h5>
+                                    <p class="text-sm">Quantity: {{ $mealSelection->quantity }}</p>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                @else
-                    <p>User information not available</p>
-                @endif
-            @endforeach
+                </div>
+            </div>
+        @else
+            <p>User information not available</p>
         @endif
+    @endforeach
+@endif
     </div>
 </section>

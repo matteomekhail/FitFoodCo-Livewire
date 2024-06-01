@@ -33,12 +33,12 @@ class UserDetailsModal extends Component
         try {
             $mealSelections = $this->user->mealSelections();
             if ($mealSelections) {
-                $mealSelections->delete();
+                $mealSelections->update(['status' => 'past']);
             } else {
                 throw new \Exception("Meal selections method returned null.");
             }
         } catch (\Exception $e) {
-            throw new \Exception("Error while deleting meal selections: " . $e->getMessage());
+            throw new \Exception("Error while updating meal selections: " . $e->getMessage());
         }
 
         // Initialize Stripe client

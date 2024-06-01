@@ -1,5 +1,4 @@
-<section id="menu" class="py-5 z-10" style="background: linear-gradient(to bottom, #000 0%, #000 95%);"
-    id="menu">
+<section id="menu" class="py-5 z-10" style="background: linear-gradient(to bottom, #000 0%, #000 95%);" id="menu">
     <div class="container mx-auto px-2 sm:px-0">
         <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <style>
@@ -44,7 +43,9 @@
                             $totalQuantity = collect($productQuantities)->sum();
                         @endphp
                         <span class="font-bold focus:ring-[#FAD961]">
-                            @if (auth()->user() && auth()->user()->wholesale)
+                            @if (auth()->user() && auth()->user()->{"10Dollars"})
+                                $ 10
+                            @elseif (auth()->user() && auth()->user()->wholesale)
                                 $ 9
                             @elseif ($totalQuantity > 20)
                                 <del class="text-red-500">$ {{ $product->price }}</del> $ 10

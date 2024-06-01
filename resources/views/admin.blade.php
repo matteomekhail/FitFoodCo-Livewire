@@ -26,37 +26,42 @@
     @endauth
 
     @livewireScripts
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const printButton = document.querySelector('.print-btn');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const printButton = document.querySelector('.print-btn');
 
-        printButton.addEventListener('click', function() {
-            let printContents = document.querySelectorAll('.uncooked-order');
-            let originalContents = document.body.innerHTML;
+            printButton.addEventListener('click', function() {
+                let printContents = document.querySelectorAll('.uncooked-order');
+                let originalContents = document.body.innerHTML;
 
-            document.body.innerHTML = '';
-            printContents.forEach(function(order) {
-                let clonedOrder = order.cloneNode(true);
+                document.body.innerHTML = '';
+                printContents.forEach(function(order) {
+                    let clonedOrder = order.cloneNode(true);
 
-                let images = clonedOrder.querySelectorAll('img');
-                images.forEach(function(image) {
-                    image.parentNode.removeChild(image);
+                    let images = clonedOrder.querySelectorAll('img');
+                    images.forEach(function(image) {
+                        image.parentNode.removeChild(image);
+                    });
+
+                    let buttons = clonedOrder.querySelectorAll('button');
+                    buttons.forEach(function(button) {
+                        button.parentNode.removeChild(button);
+                    });
+
+                    // Crea un nuovo div per ogni ordine e applica lo stile di interruzione di pagina
+                    let orderDiv = document.createElement('div');
+                    orderDiv.style.pageBreakAfter = 'always';
+                    orderDiv.appendChild(clonedOrder);
+
+                    document.body.appendChild(orderDiv);
                 });
 
-                let buttons = clonedOrder.querySelectorAll('button');
-                buttons.forEach(function(button) {
-                    button.parentNode.removeChild(button);
-                });
+                window.print();
 
-                document.body.appendChild(clonedOrder);
+                document.body.innerHTML = originalContents;
             });
-
-            window.print();
-
-            document.body.innerHTML = originalContents;
         });
-    });
-</script>
+    </script>
 </body>
 
 </html>

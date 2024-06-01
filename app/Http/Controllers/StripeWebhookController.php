@@ -109,7 +109,7 @@ class StripeWebhookController extends Controller
             $user->save();
         }
 
-        $this->clearMealSelection($user->id);
+        \App\Models\MealSelection::where('user_id', $user->id)->update(['status' => 'current']);
 
         return response()->json(['success' => 'Membership aggiornata correttamente']);
     }
@@ -118,7 +118,7 @@ class StripeWebhookController extends Controller
 
     private function clearMealSelection($userId)
     {
-        \App\Models\MealSelection::where('user_id', $userId)->delete();
+        \App\Models\MealSelection::where('user_id', $userId)->update(['status' => 'past']);
     }
 
     private function mapProductNameToMembershipType($productName)

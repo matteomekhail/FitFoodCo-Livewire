@@ -72,7 +72,7 @@ class SidebarCart extends Component
             $product = $item->product;
 
             // If total items are more than 20, set price to 10$
-            $price = auth()->user()->wholesale ? 9 : ($totalItems > 20 ? 10 : $product->price);
+            $price = auth()->user()->{"10Dollars"} ? 10 : (auth()->user()->wholesale ? 9 : ($totalItems > 20 ? 10 : $product->price));
 
             $line_items[] = [
                 'price_data' => [
